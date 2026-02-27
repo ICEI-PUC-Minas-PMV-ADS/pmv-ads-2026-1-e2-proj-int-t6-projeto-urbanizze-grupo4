@@ -1,34 +1,37 @@
 # TÍTULO DO PROJETO
 
-`CURSO`
+`ANÁLISE E DESENVOLVIMENTO DE SISTEMAS`
 
-`DISCIPLINA`
+`Eixo 1 - Projeto: Desenvolvimento de Aplicação Web Front-End - Turma 06 - 2025/2`
 
-`SEMESTRE`
+`2° SEMESTRE`
 
 Descrever resumidamente, em um ou dois parágrafos, o projeto que está sendo desenvolvido.
 
 ## Integrantes
 
-* Nome completo do aluno 1
-* Nome completo do aluno 2
-* Nome completo do aluno 3
-* Nome completo do aluno 4
+- Matheus Gabriel da Silva Ferreira
+- Davi Lucas Sena Costa de Souza
+- Samuel Cassio Batista Xavier
+- André Lucas Cabral Cândido
+- Vinicius Marques Ferreira de Sousa
 
 ## Orientador
 
-* Nome completo do professor
+- Bernardo Jeunon de Alencar
 
 ## Instruções de Instalação, Execução e Acesso
 
 **Acesso rápido (produção)**
-* URL da aplicação: https://seu-dominio.com/caminho
-* Status: online / instável / em manutenção (atualize conforme o caso)
-* Ambiente: produção / homologação
+
+- URL da aplicação: https://seu-dominio.com/caminho
+- Status: online / instável / em manutenção (atualize conforme o caso)
+- Ambiente: produção / homologação
 
 **Usuário(s) de teste (se houver):**
-* Login: usuario_teste
-* Senha: senha_teste
+
+- Login: usuario_teste
+- Senha: senha_teste
 
 # Documentação
 
