@@ -34,10 +34,6 @@ Explique de forma clara a relevância da aplicação escolhida, justificando os 
 
 ## Público-Alvo
 
-Descreva quem serão as pessoas que usarão a sua aplicação indicando os diferentes perfis. O objetivo aqui não é definir quem serão os clientes ou quais serão os papéis dos usuários na aplicação. A ideia é, dentro do possível, conhecer um pouco mais sobre o perfil dos usuários: conhecimentos prévios, relação com a tecnologia, relações hierárquicas, etc.
+O público-alvo da plataforma Urbanizze é composto principalmente por cidadãos que desejam reportar problemas urbanos em suas cidades de forma simples e rápida, como buracos nas ruas, falta de iluminação pública, lixo acumulado e outros problemas que afetam o dia a dia da população. Por meio da plataforma, esses usuários podem registrar denúncias, descrever o problema e acompanhar o andamento da solicitação.
 
-> **Links Úteis**:
-> - [Público-alvo](https://blog.hotmart.com/pt-br/publico-alvo/)
-> - [Como definir o público alvo](https://exame.com/pme/5-dicas-essenciais-para-definir-o-publico-alvo-do-seu-negocio/)
-> - [Público-alvo: o que é, tipos, como definir seu público e exemplos](https://klickpages.com.br/blog/publico-alvo-o-que-e/)
-> - [Qual a diferença entre público-alvo e persona?](https://rockcontent.com/blog/diferenca-publico-alvo-e-persona/)
+Além disso, a plataforma também é voltada para funcionários e gestores das prefeituras, que serão responsáveis por analisar os chamados, encaminhá-los para os departamentos adequados e atualizar o status das solicitações. Dessa forma, o Urbanizze contribui para melhorar a comunicação entre a população e a prefeitura, tornando a gestão de problemas urbanos mais organizada e transparente.
