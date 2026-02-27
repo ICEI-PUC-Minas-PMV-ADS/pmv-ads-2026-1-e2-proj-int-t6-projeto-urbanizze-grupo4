@@ -1,9 +1,12 @@
 # Especificações do Projeto
 
-Por meio da técnica de observação e brainstorming foram analisadas as necessidades dos usuários do sistema de forma a atender suas demandas.
+O Urbanizze será uma plataforma digital desenvolvida com o objetivo de facilitar a comunicação entre a população e as prefeituras, permitindo o registro e acompanhamento de problemas urbanos. O sistema permitirá que cidadãos cadastrem ocorrências relacionadas à infraestrutura da cidade, como buracos em vias, falta de iluminação pública, lixo acumulado e outros problemas urbanos.
 
-A partir das informações coletadas, foram determinadas as personas e histórias de usuários que serão de suma importância para a definição das funcionalidades.
+A plataforma contará com um sistema de cadastro de usuários, onde cidadãos poderão registrar e acompanhar chamados. Também haverá acesso para funcionários da prefeitura, que serão responsáveis por analisar as denúncias, atualizar o status dos chamados e encaminhá-los aos departamentos responsáveis pela resolução.
 
+O sistema contará com funcionalidades de gerenciamento de prefeituras, departamentos e funcionários, além de um módulo de controle de chamados, contendo informações como título, descrição, status, respostas e histórico de interações entre cidadãos e prefeitura.
+
+O desenvolvimento da plataforma incluirá um front-end para interação com os usuários, um back-end para processamento das informações e um banco de dados para armazenamento das informações do sistema, garantindo organização e controle das solicitações registradas.
 ## Personas
 
 As personas, ou seja, os usuários ideais do site foram definidos abaixo:
