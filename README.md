@@ -2,7 +2,7 @@
 
 `ANÁLISE E DESENVOLVIMENTO DE SISTEMAS`
 
-`Eixo 1 - Projeto: Desenvolvimento de Aplicação Web Front-End - Turma 06 - 2025/2`
+`Eixo 2 - Projeto: Desenvolvimento de Aplicação Web Front-End - Turma 06 - 2026/1`
 
 `2° SEMESTRE`
 
