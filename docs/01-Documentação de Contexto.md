@@ -23,7 +23,7 @@ Neste contexto, as organizações (sejam prefeituras ou empresas de gestão patr
 Como parte do processo de entendimento profundo das dores dos usuários, o grupo realizou uma dinâmica de Design Thinking. O resultado está sintetizado no **Mapa de Empatia** abaixo, que destaca a frustração com os canais de comunicação ineficientes e a falta de rastreabilidade das demandas de infraestrutura urbanas.
 
 <p align="center">
-  <img src="img/mapa-empatia-urbanizze.png" alt="Mapa de Empatia - Projeto Urbanizze" width="600">
+  <img src="img/mapa-empatia-urabnizze.png.png" alt="Mapa de Empatia - Projeto Urbanizze" width="600">
 </p>
 
 
