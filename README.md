@@ -59,4 +59,3 @@ Descrever resumidamente, em um ou dois parágrafos, o projeto que está sendo de
 
 <li><a href="docs/12-Apresentação do Projeto.md"> Apresentação do Projeto</a></li>
 
-Matheus Gabriel
