@@ -15,22 +15,41 @@ Nesse momento, o grupo pode optar por fazer uso  de ferramentas como Design Thin
 > - [Brainstorming](https://www.euax.com.br/2018/09/brainstorming/)
 
 ## Objetivos
+O objetivo da plataforma de denúncia de problemas urbanos (Urbanizze), é promover a participação dos cidadãos na identificação e resolução de falhas presentes no espaço urbano, como problemas de mobilidade, saneamento, iluminação pública e segurança, contribuindo diretamente para a garantia dos direitos humanos básicos.
+A proposta está alinhada aos princípios defendidos pelo ONU-Habitat, que busca cidades mais inclusivas, seguras e sustentáveis, assegurando que todos os cidadãos tenham acesso a condições dignas de vida. Dessa forma, a plataforma funcionará como um canal direto entre a população e o poder público, fortalecendo a transparência, a cidadania ativa e o direito à cidade.
 
-Aqui você deve descrever os objetivos do trabalho indicando que o objetivo geral é desenvolver um software para solucionar o problema apresentado acima. 
+Além disso, o sistema pretende facilitar a coleta de dados urbanos, contribuindo para a criação de políticas públicas mais eficientes e baseadas em evidências, como já defendido por iniciativas que integram dados urbanos no Brasil. 
 
-Apresente também alguns (pelo menos 2) objetivos específicos dependendo de onde você vai querer concentrar a sua prática investigativa, ou como você vai aprofundar no seu trabalho.
- 
-> **Links Úteis**:
-> - [Objetivo geral e objetivo específico: como fazer e quais verbos utilizar](https://blog.mettzer.com/diferenca-entre-objetivo-geral-e-objetivo-especifico/)
+
 
 ## Justificativa
 
-Explique de forma clara a relevância da aplicação escolhida, justificando os objetivos específicos e os aspectos do software que serão aprofundados, e quantifique o impacto do problema com dados concretos (números, percentuais, indicadores) obtidos por bases oficiais ou outras fontes confiáveis, sempre citadas no padrão ABNT (no formato [Numérico] ou (AUTOR, ANO)).
+ENo cotidiano das cidades brasileiras, é comum que a população enfrente diversos problemas urbanos, como ruas esburacadas, falta de saneamento básico, transporte público precário e acúmulo de lixo. Esses problemas impactam diretamente a qualidade de vida e representam, muitas vezes, violações de direitos humanos fundamentais.
+Por exemplo, dados mostram que mais de 34 milhões de brasileiros não têm acesso à água potável, evidenciando uma grave deficiência estrutural no país. Esse cenário demonstra como questões urbanas estão diretamente ligadas à dignidade humana e à saúde pública.
+Além disso, a mobilidade urbana e a infraestrutura das cidades continuam sendo desafios significativos, afetando diretamente o acesso da população a serviços essenciais, trabalho e educação, e reforçando desigualdades sociais.
 
-**Relacione o problema aos Objetivos de Desenvolvimento Sustentável (ODS), indicando quais ODS e subobjetivos são atendidos e descrevendo como o projeto contribui para cada um deles, garantindo coerência entre o impacto mensurado e as metas selecionadas.**
+Outro fator relevante que motiva a criação desta plataforma é a recente tragédia provocada pelas fortes chuvas nas cidades de Ubá e Juiz de Fora, em Minas Gerais. Os alagamentos, deslizamentos e danos estruturais observados nessas regiões evidenciam a fragilidade de muitos centros urbanos diante de eventos climáticos intensos, frequentemente agravados pela falta de planejamento urbano, manutenção preventiva e canais eficientes de comunicação entre a população e o poder público.
+Situações como essa não são casos isolados. Diversas cidades brasileiras apresentam riscos semelhantes, ainda que em menor escala. Problemas como bueiros entupidos, lixo acumulado em vias públicas e falhas na drenagem urbana, muitas vezes ignorados no dia a dia, podem se transformar em grandes tragédias quando associados a eventos climáticos extremos.
 
-> **Links Úteis**:
-> - [Como montar a justificativa](https://guiadamonografia.com.br/como-montar-justificativa-do-tcc/)
+Diante desse contexto, a criação de uma plataforma de denúncias se justifica como uma ferramenta essencial para dar voz à população, permitindo o registro de problemas reais vivenciados no cotidiano e possibilitando ações preventivas. Com a participação ativa dos cidadãos, torna-se possível identificar riscos antes que se agravem, contribuindo para soluções mais rápidas e eficazes.
+Portanto, a plataforma não apenas facilita a comunicação entre cidadãos e governo, mas também atua como um instrumento de prevenção, auxiliando na redução de danos, na promoção da segurança urbana e na garantia de direitos fundamentais, especialmente em um cenário de crescentes desafios urbanos e climáticos.
+
+
+ Referências
+•	ONU Brasil. IBGE e ONU-Habitat iniciam parceria para fortalecer uso de dados em cidades brasileiras. Disponível em: https://brasil.un.org 
+https://brasil.un.org/pt-br/302229-ibge-e-onu-habitat-iniciam-parceria-para-fortalecer-uso-de-dados-em-cidades-brasileiras
+
+•	SEMOVE / ONU-Habitat. Mobilidade urbana é considerada o principal desafio das cidades. 
+https://semove.org.br/noticias/mobilidade-urbana-e-considerada-como-principal-desafio-das-cidades-para-44-dos-brasileiros/?utm_source=chatgpt.com
+
+•	((o))eco. ONGs denunciam Brasil à ONU por violar direito à água e saneamento. 
+https://oeco.org.br/salada-verde/ongs-denunciam-brasil-a-onu-por-violar-direito-a-agua-e-ao-saneamento/?utm_source=chatgpt.com
+
+•	ONU-Habitat – Programa das Nações Unidas para Assentamentos Humanos
+https://www.un.org/en/global-issues/human-settlements
+
+•	Ouvidoria Nacional de Direitos Humanos – Canal oficial de denúncias no Brasil
+
 
 ## Público-Alvo
 
