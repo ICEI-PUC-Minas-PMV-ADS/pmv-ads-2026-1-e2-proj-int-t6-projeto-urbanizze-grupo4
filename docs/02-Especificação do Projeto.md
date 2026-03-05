@@ -100,7 +100,7 @@ O diagrama de casos de uso é o próximo passo após a elicitação de requisito
 As referências abaixo irão auxiliá-lo na geração do artefato “Diagrama de Casos de Uso”.
 
 <p align="center">
-  <img src="img/DiagramaCasosUso.jpeg" alt="Diagrama de casos de uso - Projeto Urbanizze" width="600">
+  <img src="img/CasosDeUso.jpeg" alt="Diagrama de casos de uso - Projeto Urbanizze" width="600">
 </p>
 
 > **Links Úteis**:
