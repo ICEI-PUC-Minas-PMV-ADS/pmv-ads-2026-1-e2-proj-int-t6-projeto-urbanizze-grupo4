@@ -2,11 +2,12 @@
 
 O Urbanizze será uma plataforma digital desenvolvida com o objetivo de facilitar a comunicação entre a população e as prefeituras, permitindo o registro e acompanhamento de problemas urbanos. O sistema permitirá que cidadãos cadastrem ocorrências relacionadas à infraestrutura da cidade, como buracos em vias, falta de iluminação pública, lixo acumulado e outros problemas urbanos.
 
-A plataforma contará com um sistema de cadastro de usuários, onde cidadãos poderão registrar e acompanhar chamados. Também haverá acesso para funcionários da prefeitura, que serão responsáveis por analisar as denúncias, atualizar o status dos chamados e encaminhá-los aos departamentos responsáveis pela resolução.
+A plataforma contará com um sistema de cadastro de usuários, onde cidadãos poderão registrar e acompanhar denúncias. Também haverá acesso para funcionários da prefeitura, que serão responsáveis por analisar as denúncias, atualizar o status das denúncias e encaminhá-los aos departamentos responsáveis pela resolução.
 
-O sistema contará com funcionalidades de gerenciamento de prefeituras, departamentos e funcionários, além de um módulo de controle de chamados, contendo informações como título, descrição, status, respostas e histórico de interações entre cidadãos e prefeitura.
+O sistema contará com funcionalidades de gerenciamento de prefeituras, departamentos e funcionários, além de um módulo de controle de denúncias, contendo informações como título, descrição, status, respostas e histórico de interações entre cidadãos e prefeitura.
 
 O desenvolvimento da plataforma incluirá um front-end para interação com os usuários, um back-end para processamento das informações e um banco de dados para armazenamento das informações do sistema, garantindo organização e controle das solicitações registradas.
+
 ## Personas
 
 As personas, ou seja, os usuários ideais do site foram definidos abaixo:
@@ -39,16 +40,17 @@ Características pessoais: Responsável, cheia de tarefas diárias, precisa de s
 
 Com base na análise das personas forma identificadas as seguintes histórias de usuários:
 
-| EU COMO... `PERSONA` | QUERO/PRECISO ... `FUNCIONALIDADE`                                 | PARA ... `MOTIVO/VALOR`                                                                                     |
-| -------------------- | ------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------- |
-| João Silva           | Registrar uma denúncia sobre buracos nas ruas pelo celular         | Evitar danos ao meu veículo e promover mais segurança no bairro veículo e promover mais segurança no bairro |
-| Maria Fernanda       | Anexar fotos à minha denúncia de descarte irregular de lixo        | Facilitar o entendimento e a solução do problema pelos responsáveis                                         |
-| Renata Torres        | Fazer denúncia rapidamente, sem muitos cadastros                   | Não perder tempo no meu dia corrido e ainda melhorar a vizinhança                                           |
-| Renata Torres        | Avaliar se o problema foi resolvido após o encerramento do chamado | Ter certeza de que minha contribuição realmente fez diferença                                               |
-| Anderson Souza       | Receber denúncias detalhadas e organizadas por setor               | Atender demandas com mais eficácia e menos retrabalho                                                       |
-| Anderson Souza       | Ter histórico/auditoria completa das interações em cada chamado    | Garantir transparência e poder mostrar a evolução das demandas públicas                                     |
-| Anderson Souza       | Delegar e transferir chamados entre departamentos                  | Garantir que cada problema seja tratado pela equipe correta                                                 |
-| Renata Torres        | Fazer denúncia anonimamente                                        | Não sofrer represálias caso o problema envolva vizinhos ou conhecidos                                       |
+| EU COMO... `PERSONA` | QUERO/PRECISO ... `FUNCIONALIDADE`                               | PARA ... `MOTIVO/VALOR`                                                                                     |
+| -------------------- | ---------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| João Silva           | Registrar uma denúncia sobre buracos nas ruas pelo celular       | Evitar danos ao meu veículo e promover mais segurança no bairro veículo e promover mais segurança no bairro |
+| João Silva           | Acompanhar o andamento da denúncia por status                    | Saber se o problema do bairro está sendo tratado                                                            |
+| Maria Fernanda       | Anexar fotos à minha denúncia de descarte irregular de lixo      | Facilitar o entendimento e a solução do problema pelos responsáveis                                         |
+| Maria Fernanda       | Filtrar e pesquisar denúncias                                    | Monitorar problemas ambientais da minha região e cobrar soluções                                            |
+| Renata Torres        | Fazer denúncia rapidamente, sem muitos cadastros                 | Não perder tempo no meu dia corrido e ainda melhorar a vizinhança                                           |
+| Renata Torres        | Fazer denúncia anonimamente                                      | Não sofrer represálias caso o problema envolva vizinhos ou conhecidos                                       |
+| Anderson Souza       | Receber denúncias detalhadas e organizadas por setor             | Atender demandas com mais eficácia e menos retrabalho                                                       |
+| Anderson Souza       | Ter histórico/auditoria completa das interações em cada denúncia | Garantir transparência e poder mostrar a evolução das demandas públicas                                     |
+| Anderson Souza       | Delegar e transferir denúncias entre departamentos               | Garantir que cada problema seja tratado pela equipe correta                                                 |
 
 ## Requisitos
 
@@ -56,21 +58,21 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 
 ### Requisitos Funcionais
 
-| ID    | Descrição do Requisito                                                                 | Prioridade |
-| ----- | -------------------------------------------------------------------------------------- | ---------- |
-| RF-01 | Permitir registrar um cidadão.                                                         | ALTA       |
-| RF-02 | Permitir cidadão fazer login.                                                          | ALTA       |
-| RF-03 | Permitir gerenciamento de prefeituras                                                  | ALTA       |
-| RF-04 | Permitir gerenciamento de departamentos                                                | ALTA       |
-| RF-05 | Permitir gerenciamento de funcionários                                                 | ALTA       |
-| RF-06 | Permitir o cadastro de denúncias urbanas pelos cidadãos                                | ALTA       |
-| RF-07 | Permitir o acompanhamento do status e histórico dos chamados denunciados               | ALTA       |
-| RF-08 | Habilitar denúncia anônima para o cidadão                                              | ALTA       |
-| RF-09 | Permitir a integração entre setores/departamentos, incluindo transferência de chamados | ALTA       |
-| RF-10 | Atribuir prioridade (urgência/gravidade) ao chamado aberto                             | MÉDIA      |
-| RF-11 | Disponibilizar histórico detalhado de todas as interações realizadas no chamado        | BAIXA      |
-| RF-12 | Permitir feedbacks/replicas do usuário e resposta do poder público sobre chamados      | MÉDIA      |
-| RF-13 | Diferenciar perfis de acesso: cidadão e funcionário                                    | ALTA       |
+| ID    | Descrição do Requisito                                      | Prioridade |
+| ----- | ----------------------------------------------------------- | ---------- |
+| RF-01 | Gerenciar cadastro de cidadãos                              | ALTA       |
+| RF-02 | Cidadão/funcionário realizar login                          | ALTA       |
+| RF-03 | Cidadão/funcionário recuperar senha                         | ALTA       |
+| RF-04 | Gerenciar prefeituras/cidades                               | ALTA       |
+| RF-05 | Gerenciar departamentos                                     | ALTA       |
+| RF-06 | Gerenciar funcionários                                      | ALTA       |
+| RF-07 | Gerenciar denúncias                                         | ALTA       |
+| RF-08 | Adicionar fotos/anexos a denúncia                           | MÉDIA      |
+| RF-09 | Realizar interações dentro da denúncia (envio de mensagens) | ALTA       |
+| RF-10 | Diferenciar perfis de acesso: cidadão e funcionário         | ALTA       |
+| RF-11 | Notificar cidadão/funcionário                               | ALTA       |
+| RF-12 | Permitir pesquisas e filtros de denúncias                   | MÉDIA      |
+| RF-13 | Permitir pesquisas e filtros de funcionários                | BAIXA      |
 
 ### Requisitos não Funcionais
 
@@ -80,9 +82,8 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 | RNF-02 | O site deve ser compatível com os principais navegadores do mercado (Google Chrome, Firefox, Opera).                                                            | ALTA       |
 | RNF-03 | A interface deve ser agradável, intuitiva, de fácil utilização para o usuário e deve ser organizado de tal maneira que os erros dos usuários sejam minimizados. | MÉDIA      |
 | RNF-04 | O site deve ser publicado em um ambiente acessível publicamente na Internet.                                                                                    | ALTA       |
-| RNF-05 | Os formulários devem informar ao usuário quais são os campos de preenchimento obrigatório.                                                                      | MÉDIA      |
-| RNF-06 | Utilizar símbolo e ícone para ajudar no entendimento e conseguir uma associação imediata sobre aplicações de reconhecimento.                                    | MÉDIA      |
-| RNF-07 | A aplicação ou parte dela deve ser acessível por pessoas com certo tipo de deficiência ou outra necessidade específica.                                         | ALTA       |
+| RNF-05 | Utilizar símbolo e ícone para ajudar no entendimento e conseguir uma associação imediata sobre aplicações de reconhecimento.                                    | MÉDIA      |
+| RNF-06 | A aplicação ou parte dela deve ser acessível por pessoas com certo tipo de deficiência ou outra necessidade específica.                                         | ALTA       |
 
 ## Restrições
 
@@ -110,3 +111,30 @@ As referências abaixo irão auxiliá-lo na geração do artefato “Diagrama de
 > - [Lucidchart](https://www.lucidchart.com/)
 > - [Astah](https://astah.net/)
 > - [Diagrams](https://app.diagrams.net/)
+
+---
+
+2 historias de usuarios por cada persona
+
+## Gerenciamento de prefeituras - apenas uma visualização de algumas telas, para listar todos os chamados daquela prefeitura/cidade - ver se seria mais adequado chamar de cidades
+
+## Verificar se o requisito funcionário realizar login deve ser um novo requisito ou se deve estar junto com o RF-02
+
+---
+
+Ver se isso seria funcionalidade nova ou se entra na questao de resposta dentro do chamado
+Permitir registro obrigatório de justificativa ao rejeitar, reclassificar ou encerrar chamado.
+
+| RF-01 | Permitir cadastro de cidadão com dados obrigatórios e validação básica de campos. | ALTA |
+| RF-02 | Permitir autenticação de cidadão por e-mail e senha para acesso à área do usuário. | ALTA |
+| RF-03 | Permitir cadastrar, consultar, editar e ativar/inativar prefeituras no sistema. | ALTA |
+| RF-04 | Permitir cadastrar, consultar, editar e ativar/inativar departamentos por prefeitura. | ALTA |
+| RF-05 | Permitir cadastrar, consultar, editar e desativar funcionários vinculados a setores. | ALTA |
+| RF-06 | Permitir ao cidadão abrir chamado de denúncia urbana com título, descrição e endereço. | ALTA |
+| RF-07 | Permitir ao cidadão acompanhar o andamento dos seus chamados por status. | ALTA |
+| RF-08 | Permitir ao cidadão registrar denúncia em modo anônimo, sem exibir sua identidade. | ALTA |
+| RF-09 | Permitir encaminhar e transferir chamados entre departamentos, mantendo o responsável. | ALTA |
+| RF-10 | Permitir classificar chamados por prioridade (baixa, média, alta) conforme urgência. | MÉDIA |
+| RF-11 | Registrar histórico de movimentações do chamado (alterações de status e transferências). | BAIXA |
+| RF-12 | Permitir troca de mensagens no chamado entre cidadão e prefeitura (réplicas e respostas). | MÉDIA |
+| RF-13 | Controlar permissões por perfil de acesso, diferenciando cidadão e funcionário. | ALTA |
