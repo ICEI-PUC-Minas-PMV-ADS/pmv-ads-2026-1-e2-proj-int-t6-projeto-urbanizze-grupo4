@@ -8,10 +8,107 @@ Definição de como o software é estruturado em termos dos componentes que faze
 
 O diagrama de classes ilustra graficamente como será a estrutura do software, e como cada uma das classes da sua estrutura estarão interligadas. Essas classes servem de modelo para materializar os objetos que executarão na memória.
 
-As referências abaixo irão auxiliá-lo na geração do artefato “Diagrama de Classes”.
+```mermaid
+classDiagram
+direction LR
 
-> - [Diagramas de Classes - Documentação da IBM](https://www.ibm.com/docs/pt-br/rational-soft-arch/9.6.1?topic=diagrams-class)
-> - [O que é um diagrama de classe UML? | Lucidchart](https://www.lucidchart.com/pages/pt/o-que-e-diagrama-de-classe-uml)
+class Usuario {
+	+UUID id
+	+string nome
+	+string email
+	+string senha
+	+string telefone
+	+bool ativo
+	+login(email, senha)
+	+recuperarSenha(email)
+}
+
+class Cidadao {
+	+string cpf
+	+registrarDenuncia()
+	+acompanharDenuncia()
+}
+
+class Funcionario {
+	+atualizarStatusDenuncia()
+	+encaminharDenuncia()
+}
+
+class Prefeitura_Cidade {
+	+UUID id
+	+string nome
+	+string uf
+}
+
+class Departamento {
+	+UUID id
+	+string nome
+	+string descricao
+}
+
+class Denuncia {
+	+UUID id
+	+string titulo
+	+string descricao
+	+string localizacao
+	+DateTime dataCriacao
+	+StatusDenuncia status
+	+bool anonima
+	+abrir()
+	+atualizarStatus()
+}
+
+class Anexo {
+	+UUID id
+	+string nomeArquivo
+	+string url
+	+DateTime dataUpload
+}
+
+class Mensagem {
+	+UUID id
+	+UUID remetenteId
+	+string mensagem
+	+DateTime dataHora
+}
+
+class Notificacao {
+	+UUID id
+	+UUID destinatarioId
+	+string mensagem
+	+DateTime dataEnvio
+	+bool lida
+}
+
+class StatusDenuncia {
+	<<enumeration>>
+	ABERTA
+	EM_ANALISE
+	ENCAMINHADA
+	EM_ATENDIMENTO
+	CONCLUIDA
+	INDEFERIDA
+}
+
+Usuario <|-- Cidadao
+Usuario <|-- Funcionario
+
+Prefeitura_Cidade "1" *-- "1..*" Departamento : possui
+
+Departamento "1" --> "0..*" Funcionario : lota
+Cidadao "1" --> "0..*" Denuncia : cria
+Funcionario "0..1" --> "0..*" Denuncia : atende
+Departamento "1" --> "0..*" Denuncia : responsavel
+
+Denuncia "1" *-- "0..*" Mensagem : historico
+Mensagem "1" *-- "0..*" Anexo : contem
+Mensagem "1" --> "1" Usuario : remetente
+
+Denuncia "1" --> "1" StatusDenuncia : status
+Usuario "1" --> "0..*" Notificacao : recebe
+Notificacao "0..*" --> "1" Usuario : destinatario
+Notificacao "0..*" --> "0..1" Denuncia : referente_a
+```
 
 ## Modelo ER (Projeto Conceitual)
 
@@ -26,7 +123,7 @@ A referência abaixo irá auxiliá-lo na geração do artefato “Modelo ER”.
 ## Projeto da Base de Dados
 
 O projeto da base de dados corresponde à representação das entidades e relacionamentos identificadas no Modelo ER, no formato de tabelas, com colunas e chaves primárias/estrangeiras necessárias para representar corretamente as restrições de integridade.
- 
+
 Para mais informações, consulte o microfundamento "Modelagem de Dados".
 
 ## ATENÇÃO!!!
