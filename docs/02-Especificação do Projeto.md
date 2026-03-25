@@ -101,7 +101,7 @@ O diagrama de casos de uso é o próximo passo após a elicitação de requisito
 As referências abaixo irão auxiliá-lo na geração do artefato “Diagrama de Casos de Uso”.
 
 <p align="center">
-  <img src="img/CasosDeUso.jpeg" alt="Diagrama de casos de uso - Projeto Urbanizze" width="600">
+  <img src="img/caso-de-uso.jpg" alt="Diagrama de casos de uso - Projeto Urbanizze" width="600">
 </p>
 
 > **Links Úteis**:
@@ -111,30 +111,3 @@ As referências abaixo irão auxiliá-lo na geração do artefato “Diagrama de
 > - [Lucidchart](https://www.lucidchart.com/)
 > - [Astah](https://astah.net/)
 > - [Diagrams](https://app.diagrams.net/)
-
----
-
-2 historias de usuarios por cada persona
-
-## Gerenciamento de prefeituras - apenas uma visualização de algumas telas, para listar todos os chamados daquela prefeitura/cidade - ver se seria mais adequado chamar de cidades
-
-## Verificar se o requisito funcionário realizar login deve ser um novo requisito ou se deve estar junto com o RF-02
-
----
-
-Ver se isso seria funcionalidade nova ou se entra na questao de resposta dentro do chamado
-Permitir registro obrigatório de justificativa ao rejeitar, reclassificar ou encerrar chamado.
-
-| RF-01 | Permitir cadastro de cidadão com dados obrigatórios e validação básica de campos. | ALTA |
-| RF-02 | Permitir autenticação de cidadão por e-mail e senha para acesso à área do usuário. | ALTA |
-| RF-03 | Permitir cadastrar, consultar, editar e ativar/inativar prefeituras no sistema. | ALTA |
-| RF-04 | Permitir cadastrar, consultar, editar e ativar/inativar departamentos por prefeitura. | ALTA |
-| RF-05 | Permitir cadastrar, consultar, editar e desativar funcionários vinculados a setores. | ALTA |
-| RF-06 | Permitir ao cidadão abrir chamado de denúncia urbana com título, descrição e endereço. | ALTA |
-| RF-07 | Permitir ao cidadão acompanhar o andamento dos seus chamados por status. | ALTA |
-| RF-08 | Permitir ao cidadão registrar denúncia em modo anônimo, sem exibir sua identidade. | ALTA |
-| RF-09 | Permitir encaminhar e transferir chamados entre departamentos, mantendo o responsável. | ALTA |
-| RF-10 | Permitir classificar chamados por prioridade (baixa, média, alta) conforme urgência. | MÉDIA |
-| RF-11 | Registrar histórico de movimentações do chamado (alterações de status e transferências). | BAIXA |
-| RF-12 | Permitir troca de mensagens no chamado entre cidadão e prefeitura (réplicas e respostas). | MÉDIA |
-| RF-13 | Controlar permissões por perfil de acesso, diferenciando cidadão e funcionário. | ALTA |
