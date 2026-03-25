@@ -12,71 +12,81 @@ O diagrama de classes ilustra graficamente como será a estrutura do software, e
 classDiagram
 direction LR
 
-class Usuario {
-	+UUID id
-	+string nome
-	+string email
-	+string senha
-	+string telefone
-	+bool ativo
-	+login(email, senha)
-	+recuperarSenha(email)
-}
-
-class Cidadao {
-	+string cpf
-	+registrarDenuncia()
-	+acompanharDenuncia()
-}
-
-class Funcionario {
-	+atualizarStatusDenuncia()
-	+encaminharDenuncia()
-}
-
 class Prefeitura_Cidade {
-	+UUID id
+	+int id
 	+string nome
 	+string uf
 }
 
+class Cidadao {
+	+int id
+	+string nome
+	+string email
+	+string senha
+	+string telefone
+    +string cpf
+	+bool ativo
+    +DateTime criadoEm
+	+DateTime atualizadoEm
+	+login(email, senha)
+	+recuperarSenha(email)
+    +registrarDenuncia()
+	+acompanharDenuncia()
+}
+
+class Funcionario {
+    +int id
+    +int idCidadao
+    +DateTime criadoEm
+	+DateTime atualizadoEm
+	+atualizarStatusDenuncia()
+	+encaminharDenuncia()
+}
+
 class Departamento {
-	+UUID id
+	+int id
 	+string nome
 	+string descricao
+    +DateTime criadoEm
+	+DateTime atualizadoEm
 }
 
 class Denuncia {
-	+UUID id
+	+int id
 	+string titulo
 	+string descricao
-	+string localizacao
-	+DateTime dataCriacao
+	+DateTime criadoEm
+	+DateTime atualizadoEm
 	+StatusDenuncia status
 	+bool anonima
+    +int idCidadao
+    +int idDepartamento
 	+abrir()
 	+atualizarStatus()
 }
 
 class Anexo {
-	+UUID id
+	+int id
 	+string nomeArquivo
 	+string url
-	+DateTime dataUpload
+	+DateTime criadoEm
+    +int idMensagem
 }
 
 class Mensagem {
-	+UUID id
-	+UUID remetenteId
+	+int id
+	+int idCidadao
+    +int idFuncionario
 	+string mensagem
-	+DateTime dataHora
+	+DateTime criadoEm
+    +int idDenuncia
 }
 
 class Notificacao {
-	+UUID id
-	+UUID destinatarioId
+	+int id
+	+int idCidadao
 	+string mensagem
-	+DateTime dataEnvio
+	+DateTime criadoEm
 	+bool lida
 }
 
@@ -90,8 +100,7 @@ class StatusDenuncia {
 	INDEFERIDA
 }
 
-Usuario <|-- Cidadao
-Usuario <|-- Funcionario
+Cidadao <|-- Funcionario
 
 Prefeitura_Cidade "1" *-- "1..*" Departamento : possui
 
@@ -102,11 +111,11 @@ Departamento "1" --> "0..*" Denuncia : responsavel
 
 Denuncia "1" *-- "0..*" Mensagem : historico
 Mensagem "1" *-- "0..*" Anexo : contem
-Mensagem "1" --> "1" Usuario : remetente
+Mensagem "1" --> "1" Cidadao : remetente
 
 Denuncia "1" --> "1" StatusDenuncia : status
-Usuario "1" --> "0..*" Notificacao : recebe
-Notificacao "0..*" --> "1" Usuario : destinatario
+Cidadao "1" --> "0..*" Notificacao : recebe
+Notificacao "0..*" --> "1" Cidadao : destinatario
 Notificacao "0..*" --> "0..1" Denuncia : referente_a
 ```
 
