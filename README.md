@@ -15,6 +15,7 @@ Descrever resumidamente, em um ou dois parágrafos, o projeto que está sendo de
 - Samuel Cassio Batista Xavier
 - André Lucas Cabral Cândido
 - Vinicius Marques Ferreira de Sousa
+- Felipe Batista Costa
 
 ## Orientador
 
