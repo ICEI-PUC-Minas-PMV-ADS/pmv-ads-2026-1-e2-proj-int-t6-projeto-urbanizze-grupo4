@@ -123,11 +123,101 @@ Notificacao "0..*" --> "0..1" Denuncia : referente_a
 
 O Modelo ER representa através de um diagrama como as entidades (coisas, objetos) se relacionam entre si na aplicação interativa.
 
-Sugestão de ferramentas para geração deste artefato: LucidChart e Draw.io.
+```mermaid
+erDiagram
+	PREFEITURA_CIDADE {
+		int id PK
+		string nome
+		string uf
+	}
 
-A referência abaixo irá auxiliá-lo na geração do artefato “Modelo ER”.
+	DEPARTAMENTO {
+		int id PK
+		int id_prefeitura_cidade FK
+		string nome
+		string descricao
+		datetime criado_em
+		datetime atualizado_em
+	}
 
-> - [Como fazer um diagrama entidade relacionamento | Lucidchart](https://www.lucidchart.com/pages/pt/como-fazer-um-diagrama-entidade-relacionamento)
+	CIDADAO {
+		int id PK
+		string nome
+		string email
+		string senha
+		string telefone
+		string cpf
+		bool ativo
+		datetime criado_em
+		datetime atualizado_em
+	}
+
+	FUNCIONARIO {
+		int id PK
+		int id_cidadao FK
+		int id_departamento FK
+		datetime criado_em
+		datetime atualizado_em
+	}
+
+	STATUS_DENUNCIA {
+		int id PK
+		string nome
+	}
+
+	DENUNCIA {
+		int id PK
+		int id_cidadao FK
+		int id_departamento FK
+		int id_funcionario FK
+		int id_status_denuncia FK
+		string titulo
+		string descricao
+		bool anonima
+		datetime criado_em
+		datetime atualizado_em
+	}
+
+	MENSAGEM {
+		int id PK
+		int id_denuncia FK
+		int id_cidadao FK
+		int id_funcionario FK
+		string mensagem
+		datetime criado_em
+	}
+
+	ANEXO {
+		int id PK
+		int id_mensagem FK
+		string nome_arquivo
+		string url
+		datetime criado_em
+	}
+
+	NOTIFICACAO {
+		int id PK
+		int id_cidadao FK
+		int id_denuncia FK
+		string mensagem
+		bool lida
+		datetime criado_em
+	}
+
+	PREFEITURA_CIDADE ||--|{ DEPARTAMENTO : possui
+	DEPARTAMENTO ||--o{ FUNCIONARIO : lota
+	CIDADAO ||--o{ DENUNCIA : cria
+	FUNCIONARIO o|--o{ DENUNCIA : atende
+	DEPARTAMENTO ||--o{ DENUNCIA : responsavel
+	STATUS_DENUNCIA ||--o{ DENUNCIA : classifica
+	DENUNCIA ||--o{ MENSAGEM : historico
+	MENSAGEM ||--o{ ANEXO : contem
+	CIDADAO ||--o{ MENSAGEM : envia
+	FUNCIONARIO o|--o{ MENSAGEM : responde
+	CIDADAO ||--o{ NOTIFICACAO : recebe
+	DENUNCIA o|--o{ NOTIFICACAO : referencia
+
+```
 
 ## Projeto da Base de Dados
 
