@@ -240,6 +240,8 @@ Apresente também uma figura explicando como as tecnologias estão relacionadas 
 Explique como a hospedagem e o lançamento da plataforma foi feita.
 
 > **Links Úteis**:
+
+> - [Projeto da base de dados(https://www.drawdb.app/editor/diagrams/2a8f63c2-69fc-4f10-9b63-2d8ef2b49d32)
 >
 > - [Website com GitHub Pages](https://pages.github.com/)
 > - [Programação colaborativa com Repl.it](https://repl.it/)
