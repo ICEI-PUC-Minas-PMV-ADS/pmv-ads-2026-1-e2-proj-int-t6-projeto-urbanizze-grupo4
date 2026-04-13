@@ -1,101 +1,192 @@
-# Projeto de Interface
+# Interfaces da Plataforma e Wireframes
 
-<span style="color:red">Pré-requisitos: <a href="2-Especificação do Projeto.md"> Documentação de Especificação</a></span>
+A plataforma foi projetada com foco em **usabilidade**, **acessibilidade** e **eficiência**, garantindo que diferentes perfis de usuários (visitantes, cidadãos e funcionários) consigam interagir de forma simples e intuitiva.
 
-Visão geral da interação do usuário pelas telas do sistema e protótipo interativo das telas com as funcionalidades que fazem parte do sistema (wireframes).
+O design das interfaces foi construído com base nos:
+- Requisitos Funcionais (RF)
+- Requisitos Não Funcionais (RNF)
+- Histórias de Usuário
 
-Apresente as principais interfaces da plataforma. Discuta como ela foi elaborada de forma a atender os requisitos funcionais, não funcionais e histórias de usuário abordados nas <a href="2-Especificação do Projeto.md"> Documentação de Especificação</a>.
+---
 
-## Diagrama de Fluxo
+## Principais Interfaces do Sistema
 
-O diagrama apresenta o estudo do fluxo de interação do usuário com o sistema interativo e muitas vezes sem a necessidade do desenho do design das telas da interface. Isso permite que o design das interações seja bem planejado e gere impacto na qualidade no design do wireframe interativo que será desenvolvido logo em seguida.
+### 1. Tela Inicial (Home)
 
-```mermaid
-flowchart TB
-		start([Acesso a plataforma]) --> home[Tela inicial]
-		home --> choose{Perfil de acesso}
+**Descrição:**
+- Permite acesso geral à plataforma
+- Opções de navegação:
+  - Visitante
+  - Cidadão
+  - Funcionário
 
-		choose -- Visitante --> guest[Explorar denuncias publicas]
-		guest --> filtro[Pesquisar e filtrar denuncias]
-		filtro --> convite{Quer registrar denuncia?}
-		convite -- Sim --> cadastro[Criar conta]
-		convite -- Nao --> guest
+**Requisitos atendidos:**
+- RF-02 → Login
+- RF-01 → Acesso geral
+- RNF → Usabilidade e navegação simples
 
-		choose -- Cidadao --> loginCid[Login do cidadao]
-		choose -- Funcionario --> loginFunc[Login do funcionario]
-		cadastro --> loginCid
+---
 
-		subgraph Jornada_Cidadao
-			direction TB
-			loginCid --> dashCid[Painel do cidadao]
-			dashCid --> acaoCid{O que deseja fazer?}
+### 2. Exploração de Denúncias (Visitante)
 
-			acaoCid -- Nova denuncia --> nova[Formulario de denuncia]
-			nova --> dados[Preencher titulo, descricao e local]
-			dados --> anexar[Adicionar fotos e anexos]
-			anexar --> anon{Enviar anonimamente?}
-			anon -- Sim --> enviarAnon[Enviar denuncia anonima]
-			anon -- Nao --> enviarId[Enviar denuncia identificada]
-			enviarAnon --> listaMinhas[Minhas denuncias]
-			enviarId --> listaMinhas
+**Descrição:**
+- Visualização de denúncias públicas
+- Filtros disponíveis:
+  - Localização
+  - Categoria
+  - Status
 
-			acaoCid -- Acompanhar denuncia --> listaMinhas
-			listaMinhas --> detalheCid[Detalhe da denuncia]
-			detalheCid --> status[Ver status atualizado]
-			detalheCid --> chatCid[Enviar/ler mensagens]
-			detalheCid --> notifCid[Receber notificacoes]
+**Requisitos atendidos:**
+- RF → Consulta de denúncias públicas
+- RNF → Performance de busca
 
-			acaoCid -- Editar perfil --> perfilCid[Tela de perfil]
-			acaoCid -- Recuperar senha --> recCid[Fluxo recuperar senha]
-			recCid --> loginCid
-		end
+---
 
-		subgraph Jornada_Funcionario
-			direction TB
-			loginFunc --> dashFunc[Painel de atendimento]
-			dashFunc --> fila[Lista de denuncias por filtro]
-			fila --> detalheFunc[Detalhe da denuncia]
-			detalheFunc --> analisar[Analisar denuncia]
-			analisar --> decisao{Denuncia apta?}
-			decisao -- Sim --> encaminhar[Encaminhar para setor responsavel]
-			decisao -- Nao --> indeferir[Indeferir com justificativa]
-			encaminhar --> atualizar[Atualizar status]
-			atualizar --> chatFunc[Responder mensagens do cidadao]
-			chatFunc --> concluir{Resolvida?}
-			concluir -- Sim --> fechar[Concluir denuncia]
-			concluir -- Nao --> manter[Manter em atendimento]
-			manter --> atualizar
-			indeferir --> notFunc[Disparar notificacao]
-			fechar --> notFunc
-			acaoAdm[Gerenciar departamentos e funcionarios] --> dashFunc
-		end
+### 3. Cadastro e Login
 
-		enviarAnon --> fila
-		enviarId --> fila
-		chatCid <--> chatFunc
-		notFunc --> notifCid
-		status --> fim([Encerramento da jornada])
+**Descrição:**
+- Criação de conta
+- Recuperação de senha
+- Autenticação de usuário
 
-```
+**Requisitos atendidos:**
+- RF-01 → Cadastro de cidadãos
+- RF-02 → Login
+- RF-03 → Recuperar senha
+- RNF → Segurança de autenticação
 
-> **Links Úteis**:
->
-> - [Fluxograma online: seis sites para fazer gráfico sem instalar nada | Produtividade | TechTudo](https://www.techtudo.com.br/listas/2019/03/fluxograma-online-seis-sites-para-fazer-grafico-sem-instalar-nada.ghtml)
+---
 
-## Wireframes
+### 4. Painel do Cidadão (Dashboard)
 
-![Exemplo de Wireframe](img/wireframe-example.png)
+**Descrição:**
+- Visualização das denúncias realizadas
+- Ações disponíveis:
+  - Criar nova denúncia
+  - Acompanhar andamento
+  - Editar perfil
 
-Os wireframes são protótipos utilizados no design de interfaces para representar a estrutura de um site e o relacionamento entre suas páginas. Eles funcionam como ilustrações do layout e da disposição dos elementos essenciais da interface.
+**Requisitos atendidos:**
+- RF → Gerenciar denúncias do cidadão
+- RNF → Experiência do usuário
 
-Nesta seção, é FUNDAMENTAL indicar, para cada tela/wireframe proposto, quais requisitos do projeto estão sendo contemplados por aquela tela.
+---
 
-> **Links Úteis**:
->
-> - [Protótipos vs Wireframes](https://www.nngroup.com/videos/prototypes-vs-wireframes-ux-projects/)
-> - [Ferramentas de Wireframes](https://rockcontent.com/blog/wireframes/)
-> - [MarvelApp](https://marvelapp.com/developers/documentation/tutorials/)
-> - [Figma](https://www.figma.com/)
-> - [Adobe XD](https://www.adobe.com/br/products/xd.html#scroll)
-> - [Axure](https://www.axure.com/edu) (Licença Educacional)
-> - [InvisionApp](https://www.invisionapp.com/) (Licença Educacional)
+### 5. Formulário de Denúncia
+
+**Descrição:**
+- Campos obrigatórios:
+  - Título
+  - Descrição
+  - Localização
+- Upload de anexos (imagens/documentos)
+- Opções de envio:
+  - Anônimo
+  - Identificado
+
+**Requisitos atendidos:**
+- RF → Registrar denúncia
+- RNF → Facilidade de uso e acessibilidade
+
+---
+
+### 6. Detalhamento da Denúncia
+
+**Descrição:**
+- Exibição de:
+  - Status da denúncia
+  - Histórico
+  - Comunicação (chat)
+- Notificações em tempo real
+
+**Requisitos atendidos:**
+- RF → Acompanhar denúncia
+- RF → Comunicação cidadão-funcionário
+- RNF → Atualização em tempo real
+
+---
+
+### 7. Painel do Funcionário
+
+**Descrição:**
+- Lista de denúncias recebidas
+- Filtros por prioridade/status
+- Ações disponíveis:
+  - Analisar
+  - Encaminhar
+  - Indeferir
+  - Atualizar status
+
+**Requisitos atendidos:**
+- RF-06 → Gerenciar funcionários
+- RF-07 → Gerenciar denúncias
+- RNF → Eficiência operacional
+
+---
+
+### 8. Gestão Administrativa
+
+**Descrição:**
+- Gerenciamento de:
+  - Departamentos
+  - Funcionários
+
+**Requisitos atendidos:**
+- RF-04 → Gerenciar prefeituras/cidades
+- RF-05 → Gerenciar departamentos
+- RF-06 → Gerenciar funcionários
+
+---
+
+## Relação com o Diagrama de Fluxo
+
+O diagrama de fluxo demonstra toda a jornada do usuário dentro do sistema, desde o acesso inicial até a finalização de uma denúncia.
+
+**Importância:**
+- Define a estrutura das telas
+- Garante coerência na navegação
+- Evita fluxos confusos
+- Melhora a experiência do usuário
+
+---
+
+## Sobre os Wireframes
+
+Os wireframes foram desenvolvidos com foco em:
+
+- Estrutura clara das informações
+- Navegação intuitiva
+- Priorização das ações principais
+- Redução da complexidade visual
+
+**Cada wireframe representa:**
+- Layout da interface
+- Fluxo de interação do usuário
+- Funcionalidades principais
+
+---
+
+## Conclusão
+
+A modelagem das interfaces e wireframes foi baseada diretamente nos requisitos do sistema, garantindo que:
+
+- Todas as funcionalidades estejam contempladas
+- O sistema seja fácil de usar
+- A navegação seja fluida
+- A experiência do usuário seja eficiente
+
+## wireframes
+
+
+<p align="center">
+  <img src="img/wireframes/login e cadastro.png" alt="wireframe login" width="600">
+</p>
+<p align="center">
+  <img src="img/wireframes/dashboard.png" alt="wireframe dashboard" width="600">
+</p>
+<p align="center">
+  <img src="img/wireframes/nova denuncia e detalhes.png" alt="wireframe detalhes denuncia" width="600">
+</p>
+<p align="center">
+  <img src="img/wireframes/gestao.png" alt="wireframe gestão" width="600">
+</p>
