@@ -2,10 +2,22 @@
 
 ## Instalação do Site
 
-O site em HTML/CSS/JS é um projeto estático, logo pode ser utilizado tanto em servidores...
+```
+cd src/Urbanizze
 
-## Histórico de versões
+dotnet build
 
-### [0.1.0] - DD/MM/AAAA
-#### Adicionado
-- Adicionado ...
+dotnet run
+```
+
+## Criar migration para o banco de dados
+
+```
+dotnet ef migrations add InitialCreate
+```
+
+## Aplicar as migrations e criar o banco de dados
+
+```
+dotnet ef database update
+```
