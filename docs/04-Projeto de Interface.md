@@ -1,38 +1,192 @@
+# Interfaces da Plataforma e Wireframes
 
-# Projeto de Interface
+A plataforma foi projetada com foco em **usabilidade**, **acessibilidade** e **eficiência**, garantindo que diferentes perfis de usuários (visitantes, cidadãos e funcionários) consigam interagir de forma simples e intuitiva.
 
-<span style="color:red">Pré-requisitos: <a href="2-Especificação do Projeto.md"> Documentação de Especificação</a></span>
+O design das interfaces foi construído com base nos:
+- Requisitos Funcionais (RF)
+- Requisitos Não Funcionais (RNF)
+- Histórias de Usuário
 
-Visão geral da interação do usuário pelas telas do sistema e protótipo interativo das telas com as funcionalidades que fazem parte do sistema (wireframes).
+---
 
- Apresente as principais interfaces da plataforma. Discuta como ela foi elaborada de forma a atender os requisitos funcionais, não funcionais e histórias de usuário abordados nas <a href="2-Especificação do Projeto.md"> Documentação de Especificação</a>.
+## Principais Interfaces do Sistema
 
-## Diagrama de Fluxo
+### 1. Tela Inicial (Home)
 
-O diagrama apresenta o estudo do fluxo de interação do usuário com o sistema interativo e  muitas vezes sem a necessidade do desenho do design das telas da interface. Isso permite que o design das interações seja bem planejado e gere impacto na qualidade no design do wireframe interativo que será desenvolvido logo em seguida.
+**Descrição:**
+- Permite acesso geral à plataforma
+- Opções de navegação:
+  - Visitante
+  - Cidadão
+  - Funcionário
 
-O diagrama de fluxo pode ser desenvolvido com “boxes” que possuem internamente a indicação dos principais elementos de interface - tais como menus e acessos - e funcionalidades, tais como editar, pesquisar, filtrar, configurar - e a conexão entre esses boxes a partir do processo de interação. Você pode ver mais explicações e exemplos https://www.lucidchart.com/blog/how-to-make-a-user-flow-diagram.
+**Requisitos atendidos:**
+- RF-02 → Login
+- RF-01 → Acesso geral
+- RNF → Usabilidade e navegação simples
 
-![Exemplo de Diagrama de Fluxo](img/diagramafluxo2.jpg)
+---
 
-As referências abaixo irão auxiliá-lo na geração do artefato “Diagramas de Fluxo”.
+### 2. Exploração de Denúncias (Visitante)
 
-> **Links Úteis**:
-> - [Fluxograma online: seis sites para fazer gráfico sem instalar nada | Produtividade | TechTudo](https://www.techtudo.com.br/listas/2019/03/fluxograma-online-seis-sites-para-fazer-grafico-sem-instalar-nada.ghtml)
+**Descrição:**
+- Visualização de denúncias públicas
+- Filtros disponíveis:
+  - Localização
+  - Categoria
+  - Status
 
-## Wireframes
+**Requisitos atendidos:**
+- RF → Consulta de denúncias públicas
+- RNF → Performance de busca
 
-![Exemplo de Wireframe](img/wireframe-example.png)
+---
 
-Os wireframes são protótipos utilizados no design de interfaces para representar a estrutura de um site e o relacionamento entre suas páginas. Eles funcionam como ilustrações do layout e da disposição dos elementos essenciais da interface.
+### 3. Cadastro e Login
 
-Nesta seção, é FUNDAMENTAL indicar, para cada tela/wireframe proposto, quais requisitos do projeto estão sendo contemplados por aquela tela.
- 
-> **Links Úteis**:
-> - [Protótipos vs Wireframes](https://www.nngroup.com/videos/prototypes-vs-wireframes-ux-projects/)
-> - [Ferramentas de Wireframes](https://rockcontent.com/blog/wireframes/)
-> - [MarvelApp](https://marvelapp.com/developers/documentation/tutorials/)
-> - [Figma](https://www.figma.com/)
-> - [Adobe XD](https://www.adobe.com/br/products/xd.html#scroll)
-> - [Axure](https://www.axure.com/edu) (Licença Educacional)
-> - [InvisionApp](https://www.invisionapp.com/) (Licença Educacional)
+**Descrição:**
+- Criação de conta
+- Recuperação de senha
+- Autenticação de usuário
+
+**Requisitos atendidos:**
+- RF-01 → Cadastro de cidadãos
+- RF-02 → Login
+- RF-03 → Recuperar senha
+- RNF → Segurança de autenticação
+
+---
+
+### 4. Painel do Cidadão (Dashboard)
+
+**Descrição:**
+- Visualização das denúncias realizadas
+- Ações disponíveis:
+  - Criar nova denúncia
+  - Acompanhar andamento
+  - Editar perfil
+
+**Requisitos atendidos:**
+- RF → Gerenciar denúncias do cidadão
+- RNF → Experiência do usuário
+
+---
+
+### 5. Formulário de Denúncia
+
+**Descrição:**
+- Campos obrigatórios:
+  - Título
+  - Descrição
+  - Localização
+- Upload de anexos (imagens/documentos)
+- Opções de envio:
+  - Anônimo
+  - Identificado
+
+**Requisitos atendidos:**
+- RF → Registrar denúncia
+- RNF → Facilidade de uso e acessibilidade
+
+---
+
+### 6. Detalhamento da Denúncia
+
+**Descrição:**
+- Exibição de:
+  - Status da denúncia
+  - Histórico
+  - Comunicação (chat)
+- Notificações em tempo real
+
+**Requisitos atendidos:**
+- RF → Acompanhar denúncia
+- RF → Comunicação cidadão-funcionário
+- RNF → Atualização em tempo real
+
+---
+
+### 7. Painel do Funcionário
+
+**Descrição:**
+- Lista de denúncias recebidas
+- Filtros por prioridade/status
+- Ações disponíveis:
+  - Analisar
+  - Encaminhar
+  - Indeferir
+  - Atualizar status
+
+**Requisitos atendidos:**
+- RF-06 → Gerenciar funcionários
+- RF-07 → Gerenciar denúncias
+- RNF → Eficiência operacional
+
+---
+
+### 8. Gestão Administrativa
+
+**Descrição:**
+- Gerenciamento de:
+  - Departamentos
+  - Funcionários
+
+**Requisitos atendidos:**
+- RF-04 → Gerenciar prefeituras/cidades
+- RF-05 → Gerenciar departamentos
+- RF-06 → Gerenciar funcionários
+
+---
+
+## Relação com o Diagrama de Fluxo
+
+O diagrama de fluxo demonstra toda a jornada do usuário dentro do sistema, desde o acesso inicial até a finalização de uma denúncia.
+
+**Importância:**
+- Define a estrutura das telas
+- Garante coerência na navegação
+- Evita fluxos confusos
+- Melhora a experiência do usuário
+
+---
+
+## Sobre os Wireframes
+
+Os wireframes foram desenvolvidos com foco em:
+
+- Estrutura clara das informações
+- Navegação intuitiva
+- Priorização das ações principais
+- Redução da complexidade visual
+
+**Cada wireframe representa:**
+- Layout da interface
+- Fluxo de interação do usuário
+- Funcionalidades principais
+
+---
+
+## Conclusão
+
+A modelagem das interfaces e wireframes foi baseada diretamente nos requisitos do sistema, garantindo que:
+
+- Todas as funcionalidades estejam contempladas
+- O sistema seja fácil de usar
+- A navegação seja fluida
+- A experiência do usuário seja eficiente
+
+## wireframes
+
+
+<p align="center">
+  <img src="img/wireframes/login e cadastro.png" alt="wireframe login" width="600">
+</p>
+<p align="center">
+  <img src="img/wireframes/dashboard.png" alt="wireframe dashboard" width="600">
+</p>
+<p align="center">
+  <img src="img/wireframes/nova denuncia e detalhes.png" alt="wireframe detalhes denuncia" width="600">
+</p>
+<p align="center">
+  <img src="img/wireframes/gestao.png" alt="wireframe gestão" width="600">
+</p>
