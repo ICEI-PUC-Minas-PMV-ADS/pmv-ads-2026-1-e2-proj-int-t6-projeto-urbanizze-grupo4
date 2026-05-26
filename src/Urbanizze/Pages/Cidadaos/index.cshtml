@@ -1,0 +1,93 @@
+@page
+@model SeuProjeto.Pages.Cidadaos.IndexModel
+
+@{
+    ViewData["Title"] = "Cidadãos";
+}
+
+<h1 class="fs-4 fw-bold mb-3">Cidadãos Cadastrados</h1>
+
+<!-- TOOLBAR -->
+<div class="d-flex align-items-center gap-2 mb-3 flex-wrap">
+    <button class="btn btn-sm btn-outline-secondary">Filtros</button>
+    <button class="btn btn-sm btn-dark">Todas as cidades</button>
+    <button class="btn btn-sm btn-outline-secondary">Ativos</button>
+    <div class="ms-auto d-flex gap-2">
+        <input type="text" class="form-control form-control-sm" style="width:180px" placeholder="Buscar cidadão..." />
+        @* TODO: rota para cadastro *@
+        <a asp-page="./Create" class="btn btn-sm btn-dark">+ Novo cidadão</a>
+    </div>
+</div>
+
+<!-- TABLE -->
+<div class="card border">
+    <table class="table table-hover mb-0">
+        <thead class="table-light">
+            <tr>
+                <th>Cidadão</th>
+                <th>E-mail</th>
+                <th>Telefone</th>
+                <th>Cidade</th>
+                <th>Cadastro</th>
+                <th>Status</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @* TODO: descomentar quando o Model estiver conectado ao banco
+            @foreach (var c in Model.Cidadaos)
+            {
+                <tr>
+                    <td>
+                        <span class="badge bg-secondary me-2">@c.Nome.Substring(0, 2).ToUpper()</span>
+                        @c.Nome
+                    </td>
+                    <td>@c.Email</td>
+                    <td>@c.Telefone</td>
+                    <td>@c.Cidade</td>
+                    <td>@c.DataCadastro.ToString("dd/MM/yyyy")</td>
+                    <td>
+                        <span class="badge @(c.Ativo ? "text-bg-success" : "text-bg-warning")">
+                            @(c.Ativo ? "Ativo" : "Inativo")
+                        </span>
+                    </td>
+                    <td><a asp-page="./Edit" asp-route-id="@c.Id" class="btn btn-sm btn-outline-secondary">···</a></td>
+                </tr>
+            }
+            *@
+
+            @* MOCK: remover quando o foreach acima estiver ativo *@
+            <tr>
+                <td><span class="badge bg-secondary me-2">MS</span> Marina Santos</td>
+                <td>marina.santos@gmail.com</td>
+                <td>(11) 99452-1298</td>
+                <td>São Paulo</td>
+                <td>05/01/2026</td>
+                <td><span class="badge text-bg-success">Ativo</span></td>
+                <td><button class="btn btn-sm btn-outline-secondary">···</button></td>
+            </tr>
+            <tr>
+                <td><span class="badge bg-secondary me-2">RP</span> Ricardo Pereira</td>
+                <td>ricardo.p@hotmail.com</td>
+                <td>(11) 98341-8088</td>
+                <td>São Paulo</td>
+                <td>12/01/2026</td>
+                <td><span class="badge text-bg-success">Ativo</span></td>
+                <td><button class="btn btn-sm btn-outline-secondary">···</button></td>
+            </tr>
+            <tr>
+                <td><span class="badge bg-secondary me-2">LM</span> Lucas Mendonça</td>
+                <td>lucas.m@outlook.com</td>
+                <td>(11) 99871-3348</td>
+                <td>São Paulo</td>
+                <td>22/02/2026</td>
+                <td><span class="badge text-bg-warning">Inativo</span></td>
+                <td><button class="btn btn-sm btn-outline-secondary">···</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="px-3 py-2 text-muted small border-top">
+        @* TODO: paginação dinâmica *@
+        Exibindo 1–3 de 3 registros
+    </div>
+</div>

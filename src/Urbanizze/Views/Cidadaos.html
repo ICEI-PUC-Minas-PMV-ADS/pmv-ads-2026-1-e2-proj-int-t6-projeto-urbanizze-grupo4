@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Urbanizze – Cidadãos</title>
+  <link rel="stylesheet" href="../wwwroot/css/cidadaos.css"/>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="sidebar-logo">URBANIZZE</div>
+  <nav class="sidebar-nav">
+    <a class="nav-item" href="#">Usuários</a>
+    <a class="nav-item active" href="#">Cidadãos</a>
+    <a class="nav-item" href="#">Denúncias</a>
+  </nav>
+  <div class="sidebar-footer">
+    <!-- TODO: exibir nome e papel do usuário logado -->
+    Admin User · Administrador
+  </div>
+</aside>
+ 
+<!-- MAIN -->
+<div class="main">
+ 
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <span>Sistema de Denúncias</span>
+    <input type="text" placeholder="Buscar..." />
+  </header>
+ 
+  <!-- CONTENT -->
+  <main class="content">
+    <h1 class="page-title">Cidadãos Cadastrados</h1>
+ 
+    <!-- TOOLBAR -->
+    <div class="toolbar">
+      <button>Filtros</button>
+      <button class="active">Todas as cidades</button>
+      <button>Ativos</button>
+      <div class="toolbar-right">
+        <input type="text" placeholder="Buscar cidadão..." style="padding:6px 10px;border:1px solid #ddd;border-radius:6px;font-size:13px;" />
+        <!-- TODO: rota para cadastro de novo cidadão -->
+        <button class="primary">+ Novo cidadão</button>
+      </div>
+    </div>
+ 
+    <!-- TABLE -->
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Cidadão</th>
+            <th>E-mail</th>
+            <th>Telefone</th>
+            <th>Cidade</th>
+            <th>Cadastro</th>
+            <th>Status</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- TODO: substituir por loop do controller (foreach $cidadaos as $c) -->
+          <tr>
+            <td><span class="avatar">MS</span> Marina Santos</td>
+            <td>marina.santos@gmail.com</td>
+            <td>(11) 99452-1298</td>
+            <td>São Paulo</td>
+            <td>05/01/2026</td>
+            <td><span class="badge ativo">Ativo</span></td>
+            <td><button>···</button></td>
+          </tr>
+          <tr>
+            <td><span class="avatar">RP</span> Ricardo Pereira</td>
+            <td>ricardo.p@hotmail.com</td>
+            <td>(11) 98341-8088</td>
+            <td>São Paulo</td>
+            <td>12/01/2026</td>
+            <td><span class="badge ativo">Ativo</span></td>
+            <td><button>···</button></td>
+          </tr>
+          <tr>
+            <td><span class="avatar">CR</span> Camila Rocha</td>
+            <td>camila.rocha@gmail.com</td>
+            <td>(21) 97632-5511</td>
+            <td>Rio de Janeiro</td>
+            <td>18/02/2026</td>
+            <td><span class="badge ativo">Ativo</span></td>
+            <td><button>···</button></td>
+          </tr>
+          <tr>
+            <td><span class="avatar">LM</span> Lucas Mendonça</td>
+            <td>lucas.m@outlook.com</td>
+            <td>(11) 99871-3348</td>
+            <td>São Paulo</td>
+            <td>22/02/2026</td>
+            <td><span class="badge inativo">Inativo</span></td>
+            <td><button>···</button></td>
+          </tr>
+          <tr>
+            <td><span class="avatar">PG</span> Patrícia Gomes</td>
+            <td>patricia.g@gmail.com</td>
+            <td>(31) 98210-4422</td>
+            <td>Belo Horizonte</td>
+            <td>01/03/2026</td>
+            <td><span class="badge ativo">Ativo</span></td>
+            <td><button>···</button></td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- TODO: paginação dinâmica -->
+      <div class="table-footer">Exibindo 1–5 de 5 registros</div>
+    </div>
+ 
+  </main>
+</div>
+ 
+</body>
+</html>
