@@ -1,0 +1,72 @@
+@page
+@model Urbanizze.Pages.Usuarios.IndexModel
+@{
+    ViewData["Title"] = "Usuários";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <small class="text-muted text-uppercase fw-bold">Gestão</small>
+        <h2 class="fw-bold mb-0">Usuários</h2>
+    </div>
+    <a href="#" class="btn btn-warning text-white fw-bold">
+        + Novo usuário
+    </a>
+</div>
+
+<div class="card shadow-sm">
+    <div class="card-body p-0">
+        <table class="table table-hover mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th>Usuário</th>
+                    <th>E-mail</th>
+                    <th>Departamento</th>
+                    <th>Criação</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var funcionario in Model.Funcionarios)
+                {
+                    var iniciais = string.Join("", funcionario.Cidadao.Nome
+                        .Split(' ')
+                        .Take(2)
+                        .Select(p => p[0]));
+
+                    <tr>
+                        <td class="align-middle">
+                            <div class="d-flex align-items-center gap-2">
+                                <div class="rounded-circle bg-secondary text-white d-flex align-items-center justify-content-center fw-bold"
+                                     style="width:38px;height:38px;font-size:13px;">
+                                    @iniciais
+                                </div>
+                                <span class="fw-semibold">@funcionario.Cidadao.Nome</span>
+                            </div>
+                        </td>
+                        <td class="align-middle text-muted">@funcionario.Cidadao.Email</td>
+                        <td class="align-middle">@funcionario.Departamento?.Nome</td>
+                        <td class="align-middle">@funcionario.CriadoEm.ToString("dd/MM/yyyy")</td>
+                        <td class="align-middle">
+                            @if (funcionario.Cidadao.Ativo)
+                            {
+                                <span class="badge bg-success">Ativo</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-secondary">Inativo</span>
+                            }
+                        </td>
+                        <td class="align-middle">
+                            <button class="btn btn-sm btn-outline-secondary">···</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class="px-3 py-2 text-muted small">
+            Exibindo @Model.Funcionarios.Count registro(s)
+        </div>
+    </div>
+</div>
