@@ -1,0 +1,129 @@
+@page
+@model Urbanizze.Pages.Registrar.IndexModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Registrar - Urbanizze</title>
+
+    <link rel="stylesheet" href="/css/registrar/style.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- TOPO -->
+
+    <header class="top-bar">
+
+        <div class="top-logo">
+            URBANIZZE
+        </div>
+
+        <a href="/Login" class="top-button">
+            <i class="fa-solid fa-right-to-bracket"></i>
+            Entrar
+        </a>
+
+    </header>
+
+    <!-- LINHA -->
+
+    <div class="top-line"></div>
+
+    <!-- CONTAINER -->
+
+    <div class="container">
+
+        <!-- ESQUERDA -->
+
+        <div class="left-panel">
+
+            <h1>URBANIZZE</h1>
+
+            <div class="line"></div>
+
+            <h2>
+                Faça parte da mudança
+                da sua cidade.
+            </h2>
+
+            <p>
+                Crie sua conta para denunciar
+                problemas urbanos e acompanhar
+                as soluções em tempo real.
+            </p>
+
+            <div class="features">
+
+                <div class="feature">
+                    <i class="fa-solid fa-user-plus"></i>
+                    <span>Cadastre-se</span>
+                </div>
+
+                <div class="feature">
+                    <i class="fa-solid fa-city"></i>
+                    <span>Participe</span>
+                </div>
+
+                <div class="feature">
+                    <i class="fa-solid fa-bullhorn"></i>
+                    <span>Denuncie</span>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- DIREITA -->
+
+        <div class="right-panel">
+
+            <h2>Criar conta</h2>
+
+            <p class="subtitle">
+                Preencha os dados abaixo para se cadastrar.
+            </p>
+
+            <form>
+
+                <label>Nome</label>
+                <input type="text" placeholder="Seu nome">
+
+                <label>E-mail</label>
+                <input type="email" placeholder="seu@email.com">
+
+                <label>Senha</label>
+                <input type="password" placeholder="********">
+
+                <label>Confirmar senha</label>
+                <input type="password" placeholder="********">
+
+                <button type="submit">
+                    Registrar
+                </button>
+
+                <p class="switch-page">
+                    Já possui conta?
+                    <a href="/Login">
+                        Entrar
+                    </a>
+                </p>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
