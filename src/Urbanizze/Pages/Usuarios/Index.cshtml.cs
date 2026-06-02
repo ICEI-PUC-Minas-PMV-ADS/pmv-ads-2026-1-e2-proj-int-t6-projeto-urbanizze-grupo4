@@ -13,10 +13,8 @@ public class IndexModel : PageModel
     {
         _context = context;
     }
-
     // Lista que vai guardar os funcionários buscados do banco
     public IList<Funcionario> Funcionarios { get; set; } = new List<Funcionario>();
-
     // OnGetAsync é chamado automaticamente quando a página é acessada
     public async Task OnGetAsync()
     {
