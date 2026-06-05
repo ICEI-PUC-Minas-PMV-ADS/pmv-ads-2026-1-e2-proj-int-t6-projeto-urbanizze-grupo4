@@ -1,0 +1,74 @@
+@page
+@model Urbanizze.Pages.Denuncias.IndexModel
+@{
+    ViewData["Title"] = "Denúncias";
+}
+
+<div class="section-header">
+    <span class="section-tag">OCORRÊNCIAS</span>
+    <h2>Denúncias Recebidas</h2>
+</div>
+
+<div class="filters">
+    <button class="filter-dark">
+        <i class="fa-solid fa-sliders"></i>
+        Filtros
+    </button>
+    <button class="filter-light">Todas as categorias</button>
+    <button class="filter-light">Abertos</button>
+</div>
+
+<div class="users-actions">
+    <div class="user-search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" placeholder="Buscar denúncia..." />
+    </div>
+    <a href="#" class="new-user-btn">
+        <i class="fa-solid fa-plus"></i>
+        Nova denúncia
+    </a>
+</div>
+
+<section class="user-list">
+    <table>
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Departamento</th>
+                <th>Status</th>
+                <th>Data</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var denuncia in Model.Denuncias)
+            {
+                <tr>
+                    <td>
+                        <a href="/Denuncias/Detalhes?id=@denuncia.Id" style="color:#D98936;text-decoration:none;font-weight:500;">
+                            @denuncia.Titulo
+                        </a>
+                    </td>
+                    <td>@denuncia.Departamento?.Nome</td>
+                    <td>
+                        <span class="status @(denuncia.StatusDenuncia == StatusDenuncia.ABERTA ? "active" : "inactive")">
+                            @denuncia.StatusDenuncia.ToString().Replace("_", " ")
+                        </span>
+                    </td>
+                    <td>@denuncia.CriadoEm.ToString("dd/MM/yyyy")</td>
+                    <td class="actions">
+                        <div class="dropdown">
+                            <button class="dropdown-btn">⋮</button>
+                            <div class="dropdown-content">
+                                <a href="/Denuncias/Detalhes?id=@denuncia.Id">Ver detalhes</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div style="padding:14px 20px;font-size:13px;color:#777;">
+        Exibindo @Model.Denuncias.Count registro(s)
+    </div>
+</section>

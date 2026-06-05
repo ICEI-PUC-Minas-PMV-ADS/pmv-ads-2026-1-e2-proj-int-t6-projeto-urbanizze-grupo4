@@ -10,7 +10,7 @@
 <body>
 <div class="container">
 
-    <!-- SIDEBAR -->
+    
     <aside class="sidebar">
         <div>
             <h2 class="logo">URBANIZZE</h2>
@@ -24,7 +24,7 @@
                     <i class="fa-solid fa-user"></i>
                     Cidadãos
                 </a>
-                <a href="#" class="@(Context.Request.Path.StartsWithSegments("/Denuncias") ? "active" : "")">
+                <a href="/Denuncias" class="@(Context.Request.Path.StartsWithSegments("/Denuncias") ? "active" : "")">
                     <i class="fa-solid fa-triangle-exclamation"></i>
                     Denúncias
                 </a>
@@ -43,10 +43,10 @@
         </div>
     </aside>
 
-    <!-- CONTEÚDO -->
+
     <main>
 
-        <!-- TOPBAR -->
+        
         <div class="topbar">
             <h1>Sistema de Denúncias</h1>
             <div class="topbar-right">
