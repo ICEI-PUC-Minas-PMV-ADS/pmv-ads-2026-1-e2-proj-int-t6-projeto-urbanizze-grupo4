@@ -93,33 +93,40 @@
             <p class="subtitle">
                 Preencha os dados abaixo para se cadastrar.
             </p>
+                
 
-            <form>
+                <form method="post">
 
-                <label>Nome</label>
-                <input type="text" placeholder="Seu nome">
+                    <label>Nome</label>
+                    <input type="text" asp-for="Nome" placeholder="Seu nome">
 
-                <label>E-mail</label>
-                <input type="email" placeholder="seu@email.com">
+                    <label>CPF</label>
+                    <input type="text" asp-for="Cpf" placeholder="000.000.000-00">
 
-                <label>Senha</label>
-                <input type="password" placeholder="********">
+                    <label>Telefone</label>
+                    <input type="text" asp-for="Telefone" placeholder="(31) 99999-9999">
 
-                <label>Confirmar senha</label>
-                <input type="password" placeholder="********">
+                    <label>E-mail</label>
+                    <input type="email" asp-for="Email" placeholder="seu@email.com">
 
-                <button type="submit">
-                    Registrar
-                </button>
+                    <label>Senha</label>
+                    <input type="password" asp-for="Senha" placeholder="********">
 
-                <p class="switch-page">
-                    Já possui conta?
-                    <a href="/Login">
-                        Entrar
-                    </a>
-                </p>
+                    <label>Confirmar senha</label>
+                    <input type="password" asp-for="ConfirmarSenha" placeholder="********">
 
-            </form>
+                    <button type="submit">
+                         Registrar  
+                    </button>
+
+                    <p class="switch-page">
+                        Já possui conta?
+                        <a href="/Login">
+                            Entrar
+                        </a>
+                    </p>
+
+                </form>
 
         </div>
 
