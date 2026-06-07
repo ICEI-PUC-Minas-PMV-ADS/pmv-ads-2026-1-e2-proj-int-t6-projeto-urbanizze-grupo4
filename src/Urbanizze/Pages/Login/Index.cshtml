@@ -1,0 +1,125 @@
+@page
+@model Urbanizze.Pages.Login.IndexModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login - Urbanizze</title>
+
+    <link rel="stylesheet" href="/css/login/style.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+    <header class="top-bar">
+
+        <div class="top-logo">
+            URBANIZZE
+        </div>
+
+        <a href="/Login" class="top-button">
+            <i class="fa-solid fa-right-to-bracket"></i>
+            Entrar
+        </a>
+
+    </header>
+
+    <div class="top-line"></div>
+
+    <div class="container">
+
+        <div class="left-panel">
+
+            <h1>URBANIZZE</h1>
+
+            <div class="line"></div>
+
+            <h2>
+                A cidade que você quer
+                começa por uma denúncia.
+            </h2>
+
+            <p>
+                Reporte buracos, falta de luz,
+                lixo acumulado e acompanhe
+                as respostas da prefeitura.
+            </p>
+
+            <div class="features">
+
+                <div class="feature">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>Geolocalize</span>
+                </div>
+
+                <div class="feature">
+                    <i class="fa-solid fa-camera"></i>
+                    <span>Fotografe</span>
+                </div>
+
+                <div class="feature">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    <span>Envie</span>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="right-panel">
+
+            <h2>Entrar na plataforma</h2>
+
+            <p class="subtitle">
+                Use suas credenciais para acessar o sistema.
+            </p>
+
+            <!-- 🔴 ERRO DE LOGIN -->
+            @if (!string.IsNullOrEmpty(Model.ErroLogin))
+            {
+                <p style="color:red; margin-bottom:10px;">
+                    @Model.ErroLogin
+                </p>
+            }
+
+            <form method="post">
+
+                <label>E-mail</label>
+                <input type="email" asp-for="Email" placeholder="seu@email.com">
+
+                <label>Senha</label>
+                <input type="password" asp-for="Senha" placeholder="********">
+
+                <a href="#" class="forgot-password">
+                    Esqueceu a senha?
+                </a>
+
+                <button type="submit">
+                    Entrar
+                </button>
+
+                <p class="switch-page">
+                    Não possui conta?
+                    <a href="/Registrar">
+                        Criar conta
+                    </a>
+                </p>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
