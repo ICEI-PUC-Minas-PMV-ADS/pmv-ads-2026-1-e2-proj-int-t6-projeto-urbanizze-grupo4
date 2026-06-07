@@ -422,7 +422,7 @@ footer strong { color: var(--navy); font-weight: 600; }
 /* ═══════════════════════════════════════════════
    ESTILOS DA PÁGINA DE PESQUISA (pesquisa.html)
    Centralizado aqui para que pesquisa.html precise
-   importar apenas urbanizze.css
+   importar apenas home.css
 ═══════════════════════════════════════════════ */
 
 /* ─── PAGE HEADER (mini hero) ─── */
