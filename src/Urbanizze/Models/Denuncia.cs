@@ -28,6 +28,9 @@ public class Denuncia
     [Column("descricao")]
     public string Descricao { get; set; } = string.Empty;
 
+    [Column("localizacao")]
+    public string? Localizacao { get; set; }
+
     [Column("anonima")]
     public bool Anonima { get; set; } = false;
 

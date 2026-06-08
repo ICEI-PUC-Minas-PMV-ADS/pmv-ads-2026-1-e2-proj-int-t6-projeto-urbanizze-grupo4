@@ -1,0 +1,129 @@
+@model IList<Denuncia>
+@{
+    ViewData["Title"] = "Denúncias";
+
+    int totalDenuncias = ViewBag.TotalDenuncias;
+    int totalAbertas = ViewBag.TotalAbertas;
+    int totalEmAnalise = ViewBag.TotalEmAnalise;
+    int totalResolvidas = ViewBag.TotalResolvidas;
+    string? busca = ViewBag.Busca;
+    string? filtroStatus = ViewBag.FiltroStatus;
+    string? filtroCategoria = ViewBag.FiltroCategoria;
+}
+
+<div class="section-header">
+    <span class="section-tag">OCORRÊNCIAS</span>
+    <h2>Denúncias Recebidas</h2>
+</div>
+
+<div class="stats-cards">
+    <div class="stat-card">
+        <span class="stat-label">TOTAL</span>
+        <span class="stat-value">@totalDenuncias</span>
+    </div>
+    <div class="stat-card">
+        <span class="stat-label">ABERTAS</span>
+        <span class="stat-value stat-abertas">@totalAbertas</span>
+    </div>
+    <div class="stat-card">
+        <span class="stat-label">EM ANÁLISE</span>
+        <span class="stat-value stat-analise">@totalEmAnalise</span>
+    </div>
+    <div class="stat-card">
+        <span class="stat-label">RESOLVIDAS</span>
+        <span class="stat-value stat-resolvidas">@totalResolvidas</span>
+    </div>
+</div>
+
+<form method="get" asp-action="Index" class="denuncias-toolbar">
+    <div class="filters">
+        <button type="button" class="filter-dark">
+            <i class="fa-solid fa-sliders"></i>
+            Filtros
+        </button>
+        <select name="filtroCategoria" class="filter-light" onchange="this.form.submit()">
+            <option value="">Todas as categorias</option>
+            @foreach (var cat in Model.Select(d => d.Departamento?.Nome).Where(n => n != null).Distinct())
+            {
+                <option value="@cat" selected="@(filtroCategoria == cat)">@cat</option>
+            }
+        </select>
+        <select name="filtroStatus" class="filter-light" onchange="this.form.submit()">
+            <option value="">Todos os status</option>
+            <option value="ABERTA" selected="@(filtroStatus == "ABERTA")">Abertos</option>
+            <option value="EM_ANALISE" selected="@(filtroStatus == "EM_ANALISE")">Em andamento</option>
+            <option value="CONCLUIDA" selected="@(filtroStatus == "CONCLUIDA")">Resolvidos</option>
+            <option value="INDEFERIDA" selected="@(filtroStatus == "INDEFERIDA")">Indeferidos</option>
+        </select>
+    </div>
+    <div class="users-actions">
+        <div class="user-search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" name="busca" value="@busca" placeholder="Buscar denúncia..." />
+        </div>
+        <a href="@Url.Action("Index", "Denuncias")" class="new-user-btn">
+            <i class="fa-solid fa-plus"></i>
+            Nova denúncia
+        </a>
+    </div>
+</form>
+
+<section class="user-list">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>DENÚNCIA</th>
+                <th>CATEGORIA</th>
+                <th>CIDADE</th>
+                <th>STATUS</th>
+                <th>DATA</th>
+                <th>AÇÕES</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var denuncia in Model)
+            {
+                var codigoDenuncia = $"#URZ-{denuncia.CriadoEm:yyyy}-{denuncia.Id:D7}";
+                var statusClass = denuncia.StatusDenuncia switch
+                {
+                    StatusDenuncia.ABERTA => "status-aberta",
+                    StatusDenuncia.EM_ANALISE => "status-analise",
+                    StatusDenuncia.CONCLUIDA => "status-resolvida",
+                    StatusDenuncia.INDEFERIDA => "status-indeferida",
+                    _ => ""
+                };
+                var statusTexto = denuncia.StatusDenuncia switch
+                {
+                    StatusDenuncia.ABERTA => "Aberto",
+                    StatusDenuncia.EM_ANALISE => "Em andamento",
+                    StatusDenuncia.CONCLUIDA => "Resolvido",
+                    StatusDenuncia.INDEFERIDA => "Indeferida",
+                    _ => ""
+                };
+
+                <tr>
+                    <td class="denuncia-id">@codigoDenuncia</td>
+                    <td>@denuncia.Titulo</td>
+                    <td>@denuncia.Departamento?.Nome</td>
+                    <td>@denuncia.Departamento?.PrefeituraCidade?.Nome</td>
+                    <td>
+                        <span class="denuncia-status @statusClass">@statusTexto</span>
+                    </td>
+                    <td>@denuncia.CriadoEm.ToString("dd/MM/yyyy")</td>
+                    <td class="actions">
+                        <div class="dropdown">
+                            <button class="dropdown-btn">&#8942;</button>
+                            <div class="dropdown-content">
+                                <a href="@Url.Action("Detalhes", "Denuncias", new { id = denuncia.Id })">Ver detalhes</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div style="padding: 14px 20px; font-size: 13px; color: #777;">
+        Exibindo @Model.Count de @totalDenuncias registro(s)
+    </div>
+</section>
