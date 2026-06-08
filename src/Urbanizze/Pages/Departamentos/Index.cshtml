@@ -1,0 +1,52 @@
+@page
+@model Urbanizze.Pages.Departamentos.IndexModel
+
+@{
+    ViewData["Title"] = "Departamentos";
+}
+
+<h1 class="fs-4 fw-bold mb-3">Departamentos</h1>
+
+<div class="d-flex align-items-center gap-2 mb-3 flex-wrap">
+    <div class="ms-auto d-flex gap-2">
+        <input type="text" class="form-control form-control-sm" style="width:180px" placeholder="Buscar departamento..." />
+        <a asp-page="./Create" class="btn btn-sm btn-dark">+ Novo departamento</a>
+    </div>
+</div>
+
+<div class="card border">
+    <table class="table table-hover mb-0">
+        <thead class="table-light">
+            <tr>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Prefeitura/Cidade</th>
+                <th>Funcionários</th>
+                <th>Criado em</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var d in Model.Departamentos)
+            {
+                <tr>
+                    <td>
+                        <span class="badge bg-secondary me-2">@d.Nome.Substring(0, Math.Min(2, d.Nome.Length)).ToUpper()</span>
+                        @d.Nome
+                    </td>
+                    <td>@d.Descricao</td>
+                    <td>@d.PrefeituraCidade.Nome - @d.PrefeituraCidade.Uf</td>
+                    <td>@d.Funcionarios.Count</td>
+                    <td>@d.CriadoEm.ToString("dd/MM/yyyy")</td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@d.Id" class="btn btn-sm btn-outline-secondary">Editar</a>
+                        <a asp-page="./Delete" asp-route-id="@d.Id" class="btn btn-sm btn-outline-danger">Excluir</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="px-3 py-2 text-muted small border-top">
+        Exibindo @Model.Departamentos.Count registros
+    </div>
+</div>

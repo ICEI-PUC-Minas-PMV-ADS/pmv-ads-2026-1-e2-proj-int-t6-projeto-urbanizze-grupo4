@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
  
-namespace SeuProjeto.Pages.Cidadaos
+namespace Urbanizze.Pages.Cidadaos
 {
     public class IndexModel : PageModel
     {
