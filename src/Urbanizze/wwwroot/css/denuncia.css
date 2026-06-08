@@ -1,0 +1,377 @@
+/* ===== DENUNCIAS - CARDS DE ESTATÍSTICAS ===== */
+
+.stats-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 25px;
+}
+
+.stat-card {
+    background: #FDFBF7;
+    border: 1px solid #DDD5C8;
+    border-radius: 12px;
+    padding: 20px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.stat-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #6A7B91;
+    text-transform: uppercase;
+}
+
+.stat-value {
+    font-size: 36px;
+    font-weight: 700;
+    color: #1F2937;
+}
+
+.stat-abertas { color: #2E8B57; }
+.stat-analise { color: #D98936; }
+.stat-resolvidas { color: #3B82F6; }
+
+/* ===== DENUNCIAS - TOOLBAR ===== */
+
+.denuncias-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.denuncias-toolbar .filters {
+    margin-bottom: 0;
+}
+
+.denuncias-toolbar .users-actions {
+    margin-bottom: 0;
+}
+
+/* ===== DENUNCIAS - TABELA STATUS ===== */
+
+.denuncia-id {
+    color: #D98936;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.denuncia-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.denuncia-status::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+}
+
+.status-aberta {
+    background: #DFF3E6;
+    color: #2E8B57;
+    border: 1px solid #CBE8D5;
+}
+
+.status-aberta::before {
+    background: #2E8B57;
+}
+
+.status-analise {
+    background: #FFF3E0;
+    color: #D98936;
+    border: 1px solid #F5DEB3;
+}
+
+.status-analise::before {
+    background: #D98936;
+}
+
+.status-resolvida {
+    background: #E3F2FD;
+    color: #3B82F6;
+    border: 1px solid #BBDEFB;
+}
+
+.status-resolvida::before {
+    background: #3B82F6;
+}
+
+.status-indeferida {
+    background: #FDECEA;
+    color: #E74C3C;
+    border: 1px solid #F5C6CB;
+}
+
+.status-indeferida::before {
+    background: #E74C3C;
+}
+
+/* ===== DETALHES DA DENÚNCIA ===== */
+
+.detalhes-header {
+    margin-bottom: 25px;
+}
+
+.detalhes-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.detalhes-codigo {
+    color: #D98936;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.detalhes-titulo-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.detalhes-titulo-row h2 {
+    font-size: 28px;
+    color: #1F2937;
+    font-weight: 700;
+}
+
+.voltar-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    border: 1px solid #DDD5C8;
+    background: #FDFBF7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #5B6B82;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.voltar-btn:hover {
+    background: #F5F1EA;
+}
+
+.status-form {
+    display: inline;
+}
+
+.status-select {
+    background: #F3EFE8;
+    border: 1px solid #E2DBCF;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #444;
+    cursor: pointer;
+    outline: none;
+}
+
+/* ===== DETALHES - CONTEÚDO ===== */
+
+.detalhes-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.detalhes-info {
+    background: #FDFBF7;
+    border: 1px solid #DDD5C8;
+    border-radius: 12px;
+    padding: 28px;
+}
+
+.detalhes-info h3 {
+    font-size: 18px;
+    color: #1F2937;
+    margin-bottom: 24px;
+    font-weight: 700;
+}
+
+.info-item {
+    margin-bottom: 22px;
+}
+
+.info-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #D98936;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.info-label i {
+    font-size: 13px;
+}
+
+.info-value {
+    font-size: 15px;
+    color: #2C3440;
+    line-height: 1.5;
+    white-space: pre-line;
+}
+
+.cidadao-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.info-descricao {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.7;
+}
+
+/* ===== DETALHES - COMUNICAÇÃO ===== */
+
+.detalhes-comunicacao {
+    background: #FDFBF7;
+    border: 1px solid #DDD5C8;
+    border-radius: 12px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+}
+
+.detalhes-comunicacao h3 {
+    font-size: 18px;
+    color: #1F2937;
+    margin-bottom: 4px;
+    font-weight: 700;
+}
+
+.msg-count {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 20px;
+}
+
+.mensagens-lista {
+    flex: 1;
+    overflow-y: auto;
+    max-height: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 20px;
+    padding-right: 5px;
+}
+
+.mensagem {
+    max-width: 85%;
+    padding: 14px 18px;
+    border-radius: 14px;
+    position: relative;
+}
+
+.mensagem-cidadao {
+    background: #F3EFE8;
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+}
+
+.mensagem-funcionario {
+    background: #D98936;
+    color: white;
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+}
+
+.mensagem-header {
+    margin-bottom: 6px;
+}
+
+.mensagem-header strong {
+    font-size: 13px;
+}
+
+.mensagem-funcionario .mensagem-header strong {
+    color: white;
+}
+
+.mensagem-body p {
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.mensagem-hora {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    color: #999;
+    margin-top: 8px;
+}
+
+.mensagem-funcionario .mensagem-hora {
+    color: rgba(255,255,255,0.75);
+}
+
+.mensagem-form {
+    margin-top: auto;
+}
+
+.mensagem-input-wrapper {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.mensagem-input {
+    flex: 1;
+    padding: 14px 18px;
+    border: 1px solid #DDD5C8;
+    border-radius: 12px;
+    outline: none;
+    font-size: 14px;
+    background: white;
+}
+
+.mensagem-input:focus {
+    border-color: #D98936;
+}
+
+.enviar-btn {
+    background: #D98936;
+    color: white;
+    border: none;
+    padding: 14px 20px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+    white-space: nowrap;
+}
+
+.enviar-btn:hover {
+    opacity: 0.9;
+}
