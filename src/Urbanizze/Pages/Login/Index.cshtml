@@ -84,13 +84,21 @@
                 Use suas credenciais para acessar o sistema.
             </p>
 
-            <form>
+            <!-- 🔴 ERRO DE LOGIN -->
+            @if (!string.IsNullOrEmpty(Model.ErroLogin))
+            {
+                <p style="color:red; margin-bottom:10px;">
+                    @Model.ErroLogin
+                </p>
+            }
+
+            <form method="post">
 
                 <label>E-mail</label>
-                <input type="email" placeholder="seu@email.com">
+                <input type="email" asp-for="Email" placeholder="seu@email.com">
 
                 <label>Senha</label>
-                <input type="password" placeholder="********">
+                <input type="password" asp-for="Senha" placeholder="********">
 
                 <a href="#" class="forgot-password">
                     Esqueceu a senha?

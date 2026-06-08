@@ -1,0 +1,27 @@
+@page "{id:int}"
+@model Urbanizze.Pages.PrefeiturasCidades.DeleteModel
+
+@{
+    ViewData["Title"] = "Excluir Prefeitura/Cidade";
+}
+
+<h1 class="fs-4 fw-bold mb-3">Excluir Prefeitura / Cidade</h1>
+
+<div class="card border p-4" style="max-width: 600px;">
+    <h5>Tem certeza que deseja excluir?</h5>
+    <dl class="row mt-3">
+        <dt class="col-sm-3">Nome</dt>
+        <dd class="col-sm-9">@Model.Prefeitura.Nome</dd>
+        <dt class="col-sm-3">UF</dt>
+        <dd class="col-sm-9">@Model.Prefeitura.Uf</dd>
+    </dl>
+
+    <form method="post">
+        <input type="hidden" asp-for="Prefeitura.Id" />
+        <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-danger">Confirmar Exclusão</button>
+            <a asp-page="./Index" class="btn btn-outline-secondary">Cancelar</a>
+        </div>
+    </form>
+</div>
+taskkill /PID NUMERO_AQUI /F
