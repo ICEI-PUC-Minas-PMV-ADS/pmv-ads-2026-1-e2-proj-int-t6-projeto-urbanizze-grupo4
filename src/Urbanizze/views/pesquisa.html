@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Urbanizze — Pesquisa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="home.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="home.html" class="nav-logo">
+      <span class="nav-logo-bar"></span>
+      Urbanizze
+    </a>
+    <div class="nav-links">
+      <a href="home.html" class="nav-link">Início</a>
+      <a href="pesquisa.html" class="nav-link nav-link--active">Pesquisa</a>
+    </div>
+    <button class="btn-entrar">Entrar</button>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="page-header__inner">
+      <p class="hero-eyebrow">Consulta pública</p>
+      <h1 class="page-header__title">Central de Pesquisa</h1>
+      <p class="page-header__sub">Pesquise e filtre denúncias registradas ou funcionários da administração pública.</p>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <main class="search-page">
+
+    <!-- TABS -->
+    <div class="tabs">
+      <button class="tab tab--active" data-tab="denuncias" onclick="switchTab('denuncias')">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        Denúncias
+        <span class="tab-count" id="countDenuncias">24</span>
+      </button>
+      <button class="tab" data-tab="funcionarios" onclick="switchTab('funcionarios')">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        Funcionários
+        <span class="tab-count" id="countFuncionarios">12</span>
+      </button>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         PAINEL DENÚNCIAS (RF-12)
+    ══════════════════════════════════════ -->
+    <div class="panel" id="panel-denuncias">
+
+      <div class="filter-bar">
+        <div class="search-field">
+          <svg class="search-field__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="searchDenuncias" class="search-field__input" placeholder="Buscar por título, endereço ou categoria..." oninput="filterDenuncias()" />
+          <button class="search-field__clear" id="clearDenuncias" onclick="clearSearch('denuncias')" title="Limpar">✕</button>
+        </div>
+
+        <div class="filters">
+          <div class="filter-group">
+            <label class="filter-label">Status</label>
+            <div class="filter-select-wrap">
+              <select id="filterStatus" class="filter-select" onchange="filterDenuncias()">
+                <option value="">Todos</option>
+                <option value="aberto">Aberto</option>
+                <option value="andamento">Em andamento</option>
+                <option value="resolvido">Resolvido</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <label class="filter-label">Categoria</label>
+            <div class="filter-select-wrap">
+              <select id="filterCategoria" class="filter-select" onchange="filterDenuncias()">
+                <option value="">Todas</option>
+                <option value="infraestrutura">Infraestrutura</option>
+                <option value="iluminacao">Iluminação</option>
+                <option value="limpeza">Limpeza urbana</option>
+                <option value="saneamento">Saneamento</option>
+                <option value="acessibilidade">Acessibilidade</option>
+                <option value="transporte">Transporte</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <label class="filter-label">Período</label>
+            <div class="filter-select-wrap">
+              <select id="filterPeriodo" class="filter-select" onchange="filterDenuncias()">
+                <option value="">Qualquer data</option>
+                <option value="hoje">Hoje</option>
+                <option value="7d">Últimos 7 dias</option>
+                <option value="30d">Últimos 30 dias</option>
+                <option value="90d">Últimos 90 dias</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <label class="filter-label">Bairro</label>
+            <div class="filter-select-wrap">
+              <select id="filterBairro" class="filter-select" onchange="filterDenuncias()">
+                <option value="">Todos</option>
+                <option value="centro">Centro</option>
+                <option value="savassi">Savassi</option>
+                <option value="pampulha">Pampulha</option>
+                <option value="barreiro">Barreiro</option>
+                <option value="venda-nova">Venda Nova</option>
+                <option value="contagem">Contagem</option>
+              </select>
+            </div>
+          </div>
+
+          <button class="btn-clear-filters" onclick="clearAllFilters('denuncias')">Limpar filtros</button>
+        </div>
+      </div>
+
+      <div class="chips" id="chipsDenuncias"></div>
+
+      <div class="results-info">
+        <span id="resultInfoDenuncias">Mostrando <strong>24</strong> denúncias</span>
+        <div class="sort-wrap">
+          <label class="filter-label">Ordenar por</label>
+          <div class="filter-select-wrap">
+            <select class="filter-select" id="sortDenuncias" onchange="filterDenuncias()">
+              <option value="recente">Mais recente</option>
+              <option value="antigo">Mais antigo</option>
+              <option value="titulo">Título A–Z</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table class="data-table" id="tableDenuncias">
+          <thead>
+            <tr>
+              <th>Protocolo</th>
+              <th>Título</th>
+              <th>Categoria</th>
+              <th>Bairro</th>
+              <th>Data</th>
+              <th>Status</th>
+              <!-- RF-07: coluna "Responsável" será adicionada aqui pelo colega -->
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="tbodyDenuncias"></tbody>
+        </table>
+        <div class="table-empty" id="emptyDenuncias" style="display:none">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <p>Nenhuma denúncia encontrada para os filtros aplicados.</p>
+          <button onclick="clearAllFilters('denuncias')">Limpar filtros</button>
+        </div>
+      </div>
+
+      <div class="pagination" id="paginationDenuncias"></div>
+
+    </div><!-- /panel-denuncias -->
+
+
+    <!-- ══════════════════════════════════════
+         PAINEL FUNCIONÁRIOS (RF-13)
+    ══════════════════════════════════════ -->
+    <div class="panel panel--hidden" id="panel-funcionarios">
+
+      <div class="filter-bar">
+        <div class="search-field">
+          <svg class="search-field__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="searchFuncionarios" class="search-field__input" placeholder="Buscar por nome ou matrícula..." oninput="filterFuncionarios()" />
+          <button class="search-field__clear" id="clearFuncionarios" onclick="clearSearch('funcionarios')" title="Limpar">✕</button>
+        </div>
+
+        <div class="filters">
+          <div class="filter-group">
+            <label class="filter-label">Cargo / Setor</label>
+            <div class="filter-select-wrap">
+              <select id="filterCargo" class="filter-select" onchange="filterFuncionarios()">
+                <option value="">Todos</option>
+                <option value="fiscal">Fiscal Urbano</option>
+                <option value="engenheiro">Engenheiro</option>
+                <option value="agente">Agente de Limpeza</option>
+                <option value="coordenador">Coordenador</option>
+                <option value="tecnico">Técnico</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <label class="filter-label">Status</label>
+            <div class="filter-select-wrap">
+              <select id="filterStatusFunc" class="filter-select" onchange="filterFuncionarios()">
+                <option value="">Todos</option>
+                <option value="ativo">Ativo</option>
+                <option value="inativo">Inativo</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <label class="filter-label">Ocorrências atribuídas</label>
+            <div class="filter-select-wrap">
+              <select id="filterOcorrencias" class="filter-select" onchange="filterFuncionarios()">
+                <option value="">Qualquer</option>
+                <option value="0">Sem ocorrências</option>
+                <option value="1-5">1 a 5</option>
+                <option value="6-10">6 a 10</option>
+                <option value="11+">Mais de 10</option>
+              </select>
+            </div>
+          </div>
+
+          <button class="btn-clear-filters" onclick="clearAllFilters('funcionarios')">Limpar filtros</button>
+        </div>
+      </div>
+
+      <div class="chips" id="chipsFuncionarios"></div>
+
+      <div class="results-info">
+        <span id="resultInfoFuncionarios">Mostrando <strong>12</strong> funcionários</span>
+        <div class="sort-wrap">
+          <label class="filter-label">Ordenar por</label>
+          <div class="filter-select-wrap">
+            <select class="filter-select" id="sortFuncionarios" onchange="filterFuncionarios()">
+              <option value="nome">Nome A–Z</option>
+              <option value="ocorrencias">Mais ocorrências</option>
+              <option value="cargo">Cargo</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table class="data-table" id="tableFuncionarios">
+          <thead>
+            <tr>
+              <th>Matrícula</th>
+              <th>Nome</th>
+              <th>Cargo / Setor</th>
+              <th>Ocorrências atribuídas</th>
+              <th>Status</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="tbodyFuncionarios"></tbody>
+        </table>
+        <div class="table-empty" id="emptyFuncionarios" style="display:none">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <p>Nenhum funcionário encontrado para os filtros aplicados.</p>
+          <button onclick="clearAllFilters('funcionarios')">Limpar filtros</button>
+        </div>
+      </div>
+
+      <div class="pagination" id="paginationFuncionarios"></div>
+
+    </div><!-- /panel-funcionarios -->
+
+  </main>
+
+  <footer>
+    <strong>Urbanizze</strong> — Portal de Transparência Urbana · 2026
+  </footer>
+
+  <script src="pesquisa.js"></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+@page
+@model Urbanizze.Pages.Funcionarios.IndexModel
+
+@{
+    ViewData["Title"] = "Funcionários";
+}
+
+<h1 class="fs-4 fw-bold mb-3">Funcionários</h1>
+
+<div class="d-flex align-items-center gap-2 mb-3 flex-wrap">
+    <div class="ms-auto d-flex gap-2">
+        <input type="text" class="form-control form-control-sm" style="width:180px" placeholder="Buscar funcionário..." />
+        <a asp-page="./Create" class="btn btn-sm btn-dark">+ Novo funcionário</a>
+    </div>
+</div>
+
+<div class="card border">
+    <table class="table table-hover mb-0">
+        <thead class="table-light">
+            <tr>
+                <th>Nome</th>
+                <th>E-mail</th>
+                <th>Telefone</th>
+                <th>Departamento</th>
+                <th>Prefeitura/Cidade</th>
+                <th>Criado em</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var f in Model.Funcionarios)
+            {
+                <tr>
+                    <td>
+                        <span class="badge bg-secondary me-2">@f.Cidadao.Nome.Substring(0, Math.Min(2, f.Cidadao.Nome.Length)).ToUpper()</span>
+                        @f.Cidadao.Nome
+                    </td>
+                    <td>@f.Cidadao.Email</td>
+                    <td>@f.Cidadao.Telefone</td>
+                    <td>@f.Departamento.Nome</td>
+                    <td>@f.Departamento.PrefeituraCidade?.Nome</td>
+                    <td>@f.CriadoEm.ToString("dd/MM/yyyy")</td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@f.Id" class="btn btn-sm btn-outline-secondary">Editar</a>
+                        <a asp-page="./Delete" asp-route-id="@f.Id" class="btn btn-sm btn-outline-danger">Excluir</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="px-3 py-2 text-muted small border-top">
+        Exibindo @Model.Funcionarios.Count registros
+    </div>
+</div>
