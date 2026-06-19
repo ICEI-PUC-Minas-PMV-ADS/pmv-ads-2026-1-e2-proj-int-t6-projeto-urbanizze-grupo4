@@ -4,52 +4,68 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Urbanizze</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/urbanizze.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 </head>
 <body>
-<div class="container">
+@{
+    var perfil = Context.Session.GetString("UsuarioPerfil");
+    var nome = Context.Session.GetString("UsuarioNome") ?? "Usuário";
+    var iniciais = string.Join("", nome.Split(' ').Take(2).Select(p => p[0].ToString().ToUpper()));
 
-    
+    if (string.IsNullOrEmpty(perfil))
+    {
+        Context.Response.Redirect("/Login");
+        return;
+    }
+}
+
+<div class="container">
     <aside class="sidebar">
         <div>
             <h2 class="logo">URBANIZZE</h2>
             <div class="sidebar-line"></div>
             <nav class="menu">
-                <a href="/Usuarios" class="@(Context.Request.Path.StartsWithSegments("/Usuarios") ? "active" : "")">
-                    <i class="fa-solid fa-users"></i> Usuários
-                </a>
-                <a href="/Cidadaos" class="@(Context.Request.Path.StartsWithSegments("/Cidadaos") ? "active" : "")">
-                    <i class="fa-solid fa-user"></i> Cidadãos
-                </a>
-                <a href="/Denuncias" class="@(Context.Request.Path.StartsWithSegments("/Denuncias") ? "active" : "")">
-                    <i class="fa-solid fa-triangle-exclamation"></i>
-                    Denúncias
-                <a href="/PrefeiturasCidades" class="@(Context.Request.Path.StartsWithSegments("/PrefeiturasCidades") ? "active" : "")">
-                    <i class="fa-solid fa-city"></i> Prefeituras
-                </a>
-                <a href="/Departamentos" class="@(Context.Request.Path.StartsWithSegments("/Departamentos") ? "active" : "")">
-                    <i class="fa-solid fa-building"></i> Departamentos
-                </a>
-                <a href="/Funcionarios" class="@(Context.Request.Path.StartsWithSegments("/Funcionarios") ? "active" : "")">
-                    <i class="fa-solid fa-id-badge"></i> Funcionários
-                </a>
+                @if (perfil == "Funcionario")
+                {
+                    <a href="/Usuarios" class="@(Context.Request.Path.StartsWithSegments("/Usuarios") ? "active" : "")">
+                        <i class="fa-solid fa-users"></i>
+                        Usuários
+                    </a>
+                    <a href="/Cidadaos" class="@(Context.Request.Path.StartsWithSegments("/Cidadaos") ? "active" : "")">
+                        <i class="fa-solid fa-user"></i>
+                        Cidadãos
+                    </a>
+                    <a href="/Denuncias" class="@(Context.Request.Path.StartsWithSegments("/Denuncias") ? "active" : "")">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                        Denúncias
+                    </a>
+                }
+                else
+                {
+                    <a href="/Index" class="@(Context.Request.Path.StartsWithSegments("/Index") ? "active" : "")">
+                        <i class="fa-solid fa-house"></i>
+                        Início
+                    </a>
+                    <a href="/Denuncias" class="@(Context.Request.Path.StartsWithSegments("/Denuncias") ? "active" : "")">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                        Minhas Denúncias
+                    </a>
+                }
             </nav>
         </div>
 
         <div class="admin-user">
-            <div class="avatar">AD</div>
+            <div class="avatar">@iniciais</div>
             <div class="admin-info">
-                <h4>Admin User</h4>
-                <span>Administrador</span>
+                <h4>@nome</h4>
+                <span>@(perfil == "Funcionario" ? "Funcionário" : "Cidadão")</span>
             </div>
-            <div class="logout-icon">
+            <a href="/Login/Logout" class="logout-icon" title="Sair">
                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
-            </div>
+            </a>
         </div>
     </aside>
-
 
     <main>
         <div class="topbar">
@@ -62,8 +78,8 @@
                     <i class="fa-regular fa-bell"></i>
                 </div>
                 <div class="topbar-user">
-                    <div class="top-avatar">AD</div>
-                    <span>Admin User</span>
+                    <div class="top-avatar">@iniciais</div>
+                    <span>@nome</span>
                 </div>
             </div>
         </div>
@@ -71,7 +87,6 @@
         <div class="main-line"></div>
 
         @RenderBody()
-
     </main>
 </div>
 

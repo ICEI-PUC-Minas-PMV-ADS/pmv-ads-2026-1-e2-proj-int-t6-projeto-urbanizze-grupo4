@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace Urbanizze.Pages.Login
 {
@@ -25,20 +25,35 @@ namespace Urbanizze.Pages.Login
         {
         }
 
-        public IActionResult OnPost()
+        public async Task<IActionResult> OnPostAsync()
         {
-            var usuario = _context.Cidadaos
-                .FirstOrDefault(x =>
-                    x.Email == Email &&
-                    x.Senha == Senha);
+            var cidadao = await _context.Cidadaos
+                .FirstOrDefaultAsync(x => x.Email == Email && x.Senha == Senha);
 
-            if (usuario == null)
+            if (cidadao == null)
             {
                 ErroLogin = "Email ou senha inválidos.";
                 return Page();
             }
 
-            return RedirectToPage("/Index");
+            var funcionario = await _context.Funcionarios
+                .FirstOrDefaultAsync(f => f.CidadaoId == cidadao.Id);
+
+            HttpContext.Session.SetInt32("UsuarioId", cidadao.Id);
+            HttpContext.Session.SetString("UsuarioNome", cidadao.Nome);
+            HttpContext.Session.SetString("UsuarioEmail", cidadao.Email);
+
+            if (funcionario != null)
+            {
+                HttpContext.Session.SetString("UsuarioPerfil", "Funcionario");
+                HttpContext.Session.SetInt32("FuncionarioId", funcionario.Id);
+                return RedirectToPage("/Usuarios/Index");
+            }
+            else
+            {
+                HttpContext.Session.SetString("UsuarioPerfil", "Cidadao");
+                return RedirectToPage("/Index");
+            }
         }
     }
 }
