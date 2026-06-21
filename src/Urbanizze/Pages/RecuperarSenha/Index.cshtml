@@ -1,5 +1,5 @@
 @page
-@model Urbanizze.Pages.Login.IndexModel
+@model Urbanizze.Pages.RecuperarSenha.IndexModel
 @{
     Layout = null;
 }
@@ -11,7 +11,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Login - Urbanizze</title>
+    <title>Recuperar Senha - Urbanizze</title>
 
     <link rel="stylesheet" href="/css/login/style.css">
 
@@ -45,31 +45,28 @@
             <div class="line"></div>
 
             <h2>
-                A cidade que você quer
-                começa por uma denúncia.
+                Recuperação de senha
             </h2>
 
             <p>
-                Reporte buracos, falta de luz,
-                lixo acumulado e acompanhe
-                as respostas da prefeitura.
+                Informe seu e-mail e defina uma nova senha para acessar o sistema novamente.
             </p>
 
             <div class="features">
 
                 <div class="feature">
-                    <i class="fa-solid fa-location-dot"></i>
-                    <span>Geolocalize</span>
+                    <i class="fa-solid fa-lock"></i>
+                    <span>Segurança</span>
                 </div>
 
                 <div class="feature">
-                    <i class="fa-solid fa-camera"></i>
-                    <span>Fotografe</span>
+                    <i class="fa-solid fa-key"></i>
+                    <span>Reset</span>
                 </div>
 
                 <div class="feature">
-                    <i class="fa-solid fa-paper-plane"></i>
-                    <span>Envie</span>
+                    <i class="fa-solid fa-user"></i>
+                    <span>Acesso</span>
                 </div>
 
             </div>
@@ -78,17 +75,23 @@
 
         <div class="right-panel">
 
-            <h2>Entrar na plataforma</h2>
+            <h2>Recuperar senha</h2>
 
             <p class="subtitle">
-                Use suas credenciais para acessar o sistema.
+                Use seu e-mail cadastrado.
             </p>
 
-            <!-- 🔴 ERRO DE LOGIN -->
-            @if (!string.IsNullOrEmpty(Model.ErroLogin))
+            @if (!string.IsNullOrEmpty(Model.Erro))
             {
                 <p style="color:red; margin-bottom:10px;">
-                    @Model.ErroLogin
+                    @Model.Erro
+                </p>
+            }
+
+            @if (!string.IsNullOrEmpty(Model.Mensagem))
+            {
+                <p style="color:green; margin-bottom:10px;">
+                    @Model.Mensagem
                 </p>
             }
 
@@ -97,24 +100,15 @@
                 <label>E-mail</label>
                 <input type="email" asp-for="Email" placeholder="seu@email.com">
 
-                <label>Senha</label>
-                <input type="password" asp-for="Senha" placeholder="********">
+                <label>Nova senha</label>
+                <input type="password" asp-for="NovaSenha" placeholder="********">
 
-                <!-- ✅ AQUI ESTÁ A CORREÇÃO -->
-                <a href="/RecuperarSenha" class="forgot-password">
-                    Esqueceu a senha?
-                </a>
+                <label>Confirmar senha</label>
+                <input type="password" asp-for="ConfirmarSenha" placeholder="********">
 
                 <button type="submit">
-                    Entrar
+                    Alterar senha
                 </button>
-
-                <p class="switch-page">
-                    Não possui conta?
-                    <a href="/Registrar">
-                        Criar conta
-                    </a>
-                </p>
 
             </form>
 
