@@ -21,3 +21,15 @@ dotnet ef migrations add InitialCreate
 ```
 dotnet ef database update
 ```
+
+## Renomear tag docker
+
+```
+docker tag pmv-ads-2026-1-e2-proj-int-t6-projeto-urbanizze-grupo4-app:latest andrecabral21/pmv-ads-2026-1-e2-proj-int-t6-projeto-urbanizze-grupo4-app:latest
+```
+
+## Subir imagem para o docker hub
+
+```
+docker push andrecabral21/pmv-ads-2026-1-e2-proj-int-t6-projeto-urbanizze-grupo4-app:latest
+```

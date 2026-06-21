@@ -20,6 +20,14 @@ public class DenunciasController : Controller
                 .ThenInclude(dep => dep.PrefeituraCidade)
             .AsQueryable();
 
+        var perfil = HttpContext.Session.GetString("UsuarioPerfil");
+        var usuarioId = HttpContext.Session.GetInt32("UsuarioId");
+
+        if (perfil == "Cidadao" && usuarioId != null)
+        {
+            query = query.Where(d => d.CidadaoId == usuarioId.Value);
+        }
+
         if (!string.IsNullOrWhiteSpace(busca))
         {
             query = query.Where(d => d.Titulo.Contains(busca) || d.Descricao.Contains(busca));
@@ -40,7 +48,12 @@ public class DenunciasController : Controller
 
         var denuncias = await query.OrderByDescending(d => d.CriadoEm).ToListAsync();
 
-        var todas = await _context.Denuncias.ToListAsync();
+        var todasQuery = _context.Denuncias.AsQueryable();
+        if (perfil == "Cidadao" && usuarioId != null)
+        {
+            todasQuery = todasQuery.Where(d => d.CidadaoId == usuarioId.Value);
+        }
+        var todas = await todasQuery.ToListAsync();
         ViewBag.TotalDenuncias = todas.Count;
         ViewBag.TotalAbertas = todas.Count(d => d.StatusDenuncia == StatusDenuncia.ABERTA);
         ViewBag.TotalEmAnalise = todas.Count(d => d.StatusDenuncia == StatusDenuncia.EM_ANALISE);
@@ -81,13 +94,22 @@ public class DenunciasController : Controller
 
         if (!string.IsNullOrWhiteSpace(novaMensagem))
         {
+            var perfil = HttpContext.Session.GetString("UsuarioPerfil");
             var mensagem = new Mensagem
             {
                 DenunciaId = id,
-                CidadaoId = denuncia.CidadaoId,
                 Texto = novaMensagem,
                 CriadoEm = DateTime.UtcNow
             };
+
+            if (perfil == "Funcionario")
+            {
+                mensagem.FuncionarioId = HttpContext.Session.GetInt32("FuncionarioId");
+            }
+            else
+            {
+                mensagem.CidadaoId = HttpContext.Session.GetInt32("UsuarioId");
+            }
 
             _context.Mensagens.Add(mensagem);
             await _context.SaveChangesAsync();
