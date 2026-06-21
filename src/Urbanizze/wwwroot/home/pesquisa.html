@@ -104,19 +104,20 @@
           </div>
 
           <div class="filter-group">
-            <label class="filter-label">Bairro</label>
-            <div class="filter-select-wrap">
-              <select id="filterBairro" class="filter-select" onchange="filterDenuncias()">
-                <option value="">Todos</option>
-                <option value="centro">Centro</option>
-                <option value="savassi">Savassi</option>
-                <option value="pampulha">Pampulha</option>
-                <option value="barreiro">Barreiro</option>
-                <option value="venda-nova">Venda Nova</option>
-                <option value="contagem">Contagem</option>
-              </select>
-            </div>
-          </div>
+  <label class="filter-label">Bairro</label>
+  <div class="filter-select-wrap">
+    <select id="filterBairro" class="filter-select" onchange="filterDenuncias()">
+      <option value="">Todos</option>
+      <option value="Centro">Centro</option>
+      <option value="Savassi">Savassi</option>
+      <option value="Vila Nova">Vila Nova</option>
+      <option value="Jardim América">Jardim América</option>
+      <option value="Consolação">Consolação</option>
+      <option value="Copacabana">Copacabana</option>
+      <option value="Liberdade">Liberdade</option>
+    </select>
+  </div>
+</div>
 
           <button class="btn-clear-filters" onclick="clearAllFilters('denuncias')">Limpar filtros</button>
         </div>
@@ -171,55 +172,57 @@
     ══════════════════════════════════════ -->
     <div class="panel panel--hidden" id="panel-funcionarios">
 
-      <div class="filter-bar">
-        <div class="search-field">
-          <svg class="search-field__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          <input type="text" id="searchFuncionarios" class="search-field__input" placeholder="Buscar por nome ou matrícula..." oninput="filterFuncionarios()" />
-          <button class="search-field__clear" id="clearFuncionarios" onclick="clearSearch('funcionarios')" title="Limpar">✕</button>
-        </div>
+      
 
-        <div class="filters">
-          <div class="filter-group">
-            <label class="filter-label">Cargo / Setor</label>
-            <div class="filter-select-wrap">
-              <select id="filterCargo" class="filter-select" onchange="filterFuncionarios()">
-                <option value="">Todos</option>
-                <option value="fiscal">Fiscal Urbano</option>
-                <option value="engenheiro">Engenheiro</option>
-                <option value="agente">Agente de Limpeza</option>
-                <option value="coordenador">Coordenador</option>
-                <option value="tecnico">Técnico</option>
-              </select>
-            </div>
-          </div>
+        <div class="filter-bar">
+  <div class="search-field">
+    <svg class="search-field__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input type="text" id="searchFuncionarios" class="search-field__input" placeholder="Buscar por nome ou matrícula..." oninput="filterFuncionarios()" />
+    <button class="search-field__clear" id="clearFuncionarios" onclick="clearSearch('funcionarios')" title="Limpar">✕</button>
+  </div>
 
-          <div class="filter-group">
-            <label class="filter-label">Status</label>
-            <div class="filter-select-wrap">
-              <select id="filterStatusFunc" class="filter-select" onchange="filterFuncionarios()">
-                <option value="">Todos</option>
-                <option value="ativo">Ativo</option>
-                <option value="inativo">Inativo</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="filter-group">
-            <label class="filter-label">Ocorrências atribuídas</label>
-            <div class="filter-select-wrap">
-              <select id="filterOcorrencias" class="filter-select" onchange="filterFuncionarios()">
-                <option value="">Qualquer</option>
-                <option value="0">Sem ocorrências</option>
-                <option value="1-5">1 a 5</option>
-                <option value="6-10">6 a 10</option>
-                <option value="11+">Mais de 10</option>
-              </select>
-            </div>
-          </div>
-
-          <button class="btn-clear-filters" onclick="clearAllFilters('funcionarios')">Limpar filtros</button>
-        </div>
+  <div class="filters">
+    <div class="filter-group">
+      <label class="filter-label">Cargo / Setor</label>
+      <div class="filter-select-wrap">
+        <select id="filterCargo" class="filter-select" onchange="filterFuncionarios()">
+          <option value="">Todos</option>
+          <option value="Iluminação">Iluminação</option>
+          <option value="Saneamento">Saneamento</option>
+          <option value="Pavimentação">Pavimentação</option>
+          <option value="Lixo">Lixo</option>
+          <option value="Mobilidade">Mobilidade</option>
+        </select>
       </div>
+    </div>
+
+    <div class="filter-group">
+      <label class="filter-label">Status</label>
+      <div class="filter-select-wrap">
+        <select id="filterStatusFunc" class="filter-select" onchange="filterFuncionarios()">
+          <option value="">Todos</option>
+          <option value="ativo">Ativo</option>
+          <option value="inativo">Inativo</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="filter-group">
+      <label class="filter-label">Ocorrências atribuídas</label>
+      <div class="filter-select-wrap">
+        <select id="filterOcorrencias" class="filter-select" onchange="filterFuncionarios()">
+          <option value="">Qualquer</option>
+          <option value="0">Sem ocorrências</option>
+          <option value="1-5">1 a 5</option>
+          <option value="6-10">6 a 10</option>
+          <option value="11+">Mais de 10</option>
+        </select>
+      </div>
+    </div>
+
+    <button class="btn-clear-filters" onclick="clearAllFilters('funcionarios')">Limpar filtros</button>
+  </div>
+</div>
 
       <div class="chips" id="chipsFuncionarios"></div>
 
