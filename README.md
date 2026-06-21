@@ -25,9 +25,9 @@ Descrever resumidamente, em um ou dois parágrafos, o projeto que está sendo de
 
 **Acesso rápido (produção)**
 
-- URL da aplicação: https://seu-dominio.com/caminho
-- Status: online / instável / em manutenção (atualize conforme o caso)
-- Ambiente: produção / homologação
+- URL da aplicação: https://urbanizze.3-140-157-48.nip.io/
+- Status: online
+- Ambiente: produção
 
 **Usuário(s) de teste (se houver):**
 

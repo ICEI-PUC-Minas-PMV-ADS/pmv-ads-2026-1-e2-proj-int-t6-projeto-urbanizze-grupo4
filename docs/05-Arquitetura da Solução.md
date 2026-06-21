@@ -237,12 +237,64 @@ Apresente também uma figura explicando como as tecnologias estão relacionadas 
 
 ## Hospedagem
 
-Explique como a hospedagem e o lançamento da plataforma foi feita.
+A aplicação Urbanizze foi publicada em uma VPS (Virtual Private Server) utilizando Docker e Docker Swarm para orquestração de contêineres.
+
+### Infraestrutura
+
+A hospedagem foi realizada em uma VPS Linux com as seguintes características:
+
+- **IP do Servidor**: 3.140.157.48
+- **Domínio**: urbanizze.3-140-157-48.nip.io
+- **Orquestração**: Docker Swarm
+- **Reverse Proxy**: Traefik v2
+
+### Arquitetura de Contêineres
+
+A aplicação utiliza uma arquitetura de múltiplos contêineres:
+
+**Contêiner da Aplicação:**
+
+- Imagem base: ASP.NET Core 10.0
+- Build multi-stage (SDK para compilação, Runtime para execução)
+- Recursos: 1 GB RAM, 0.2 CPU core
+- Imagem publicada no Docker Hub
+
+**Contêiner do Banco de Dados:**
+
+- SQL Server 2022
+- Recursos: 4 GB RAM, 0.3 CPU core
+- Volume persistente para garantir durabilidade dos dados
+- Health checks para monitoramento automático
+
+### Docker Swarm
+
+O Docker Swarm foi utilizado para orquestração, proporcionando:
+
+- Deploys com zero downtime (estratégia start-first)
+- Rollback automático em caso de falha
+- Restart automático dos contêineres
+- Health checks contínuos
+
+### Traefik - Reverse Proxy e SSL
+
+O Traefik gerencia o tráfego HTTP/HTTPS da aplicação:
+
+- Roteamento automático baseado em domínio
+- Certificados SSL/TLS automáticos via Let's Encrypt
+- Renovação automática de certificados
+- Load balancing entre réplicas
+
+### Segurança
+
+As credenciais sensíveis são gerenciadas através de variáveis de ambiente configuradas na VPS, mantendo senhas e strings de conexão fora do código-fonte.
+
+### Acesso
+
+A aplicação está disponível em **https://urbanizze.3-140-157-48.nip.io** com certificado SSL válido fornecido automaticamente pelo Let's Encrypt.
 
 > **Links Úteis**:
 
 > - [Projeto da base de dados(https://www.drawdb.app/editor/diagrams/2a8f63c2-69fc-4f10-9b63-2d8ef2b49d32)
->
 > - [Website com GitHub Pages](https://pages.github.com/)
 > - [Programação colaborativa com Repl.it](https://repl.it/)
 > - [Getting Started with Heroku](https://devcenter.heroku.com/start)
