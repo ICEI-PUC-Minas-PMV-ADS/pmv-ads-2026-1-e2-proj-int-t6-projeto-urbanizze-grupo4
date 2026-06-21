@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 
 namespace Urbanizze.Pages.Registrar
 {
@@ -30,19 +31,40 @@ namespace Urbanizze.Pages.Registrar
         [BindProperty]
         public string ConfirmarSenha { get; set; } = "";
 
-        public void OnGet()
+        [BindProperty]
+        public string Perfil { get; set; } = "Cidadao";
+
+        [BindProperty]
+        public int? DepartamentoId { get; set; }
+
+        public string Erro { get; set; } = "";
+
+        public List<Departamento> DepartamentosDisponiveis { get; set; } = new();
+
+        public async Task OnGetAsync()
         {
+            DepartamentosDisponiveis = await _context.Departamentos
+                .Include(d => d.PrefeituraCidade)
+                .ToListAsync();
         }
 
-        public IActionResult OnPost()
+        public async Task<IActionResult> OnPostAsync()
         {
             try
             {
-                Console.WriteLine("ENTROU NO ONPOST");
+                DepartamentosDisponiveis = await _context.Departamentos
+                    .Include(d => d.PrefeituraCidade)
+                    .ToListAsync();
 
                 if (Senha != ConfirmarSenha)
                 {
-                    Console.WriteLine("SENHAS DIFERENTES");
+                    Erro = "As senhas não conferem.";
+                    return Page();
+                }
+
+                if (Perfil == "Funcionario" && (DepartamentoId == null || DepartamentoId == 0))
+                {
+                    Erro = "Selecione um departamento para cadastro como funcionário.";
                     return Page();
                 }
 
@@ -57,15 +79,26 @@ namespace Urbanizze.Pages.Registrar
                 };
 
                 _context.Cidadaos.Add(cidadao);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
 
-                Console.WriteLine("SALVO COM SUCESSO");
+                if (Perfil == "Funcionario" && DepartamentoId.HasValue)
+                {
+                    var funcionario = new Funcionario
+                    {
+                        CidadaoId = cidadao.Id,
+                        DepartamentoId = DepartamentoId.Value
+                    };
+
+                    _context.Funcionarios.Add(funcionario);
+                    await _context.SaveChangesAsync();
+                }
 
                 return RedirectToPage("/Login/Index");
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
+                Erro = "Erro ao cadastrar. Tente novamente.";
                 return Page();
             }
         }

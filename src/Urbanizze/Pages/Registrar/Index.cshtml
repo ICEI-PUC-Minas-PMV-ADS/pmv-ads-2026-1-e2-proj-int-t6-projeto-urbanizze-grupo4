@@ -10,127 +10,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Registrar - Urbanizze</title>
-
     <link rel="stylesheet" href="/css/registrar/style.css">
-
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body>
 
-    <!-- TOPO -->
-
     <header class="top-bar">
-
-        <div class="top-logo">
-            URBANIZZE
-        </div>
-
+        <div class="top-logo">URBANIZZE</div>
         <a href="/Login" class="top-button">
-            <i class="fa-solid fa-right-to-bracket"></i>
-            Entrar
+            <i class="fa-solid fa-right-to-bracket"></i> Entrar
         </a>
-
     </header>
-
-    <!-- LINHA -->
 
     <div class="top-line"></div>
 
-    <!-- CONTAINER -->
-
     <div class="container">
 
-        <!-- ESQUERDA -->
-
         <div class="left-panel">
-
             <h1>URBANIZZE</h1>
-
             <div class="line"></div>
-
-            <h2>
-                Faça parte da mudança
-                da sua cidade.
-            </h2>
-
-            <p>
-                Crie sua conta para denunciar
-                problemas urbanos e acompanhar
-                as soluções em tempo real.
-            </p>
-
+            <h2>Faça parte da mudança da sua cidade.</h2>
+            <p>Crie sua conta para denunciar problemas urbanos e acompanhar as soluções em tempo real.</p>
             <div class="features">
-
                 <div class="feature">
                     <i class="fa-solid fa-user-plus"></i>
                     <span>Cadastre-se</span>
                 </div>
-
                 <div class="feature">
                     <i class="fa-solid fa-city"></i>
                     <span>Participe</span>
                 </div>
-
                 <div class="feature">
                     <i class="fa-solid fa-bullhorn"></i>
                     <span>Denuncie</span>
                 </div>
-
             </div>
-
         </div>
 
-        <!-- DIREITA -->
-
         <div class="right-panel">
-
             <h2>Criar conta</h2>
+            <p class="subtitle">Preencha os dados abaixo para se cadastrar.</p>
 
-            <p class="subtitle">
-                Preencha os dados abaixo para se cadastrar.
-            </p>
-                
+            @if (!string.IsNullOrEmpty(Model.Erro))
+            {
+                <p style="color:red; margin-bottom:10px;">@Model.Erro</p>
+            }
 
-                <form method="post">
+            <form method="post">
 
-                    <label>Nome</label>
-                    <input type="text" asp-for="Nome" placeholder="Seu nome">
+                <label>Nome</label>
+                <input type="text" asp-for="Nome" placeholder="Seu nome" required>
 
-                    <label>CPF</label>
-                    <input type="text" asp-for="Cpf" placeholder="000.000.000-00">
+                <label>CPF</label>
+                <input type="text" asp-for="Cpf" placeholder="000.000.000-00" required>
 
-                    <label>Telefone</label>
-                    <input type="text" asp-for="Telefone" placeholder="(31) 99999-9999">
+                <label>Telefone</label>
+                <input type="text" asp-for="Telefone" placeholder="(31) 99999-9999" required>
 
-                    <label>E-mail</label>
-                    <input type="email" asp-for="Email" placeholder="seu@email.com">
+                <label>E-mail</label>
+                <input type="email" asp-for="Email" placeholder="seu@email.com" required>
 
-                    <label>Senha</label>
-                    <input type="password" asp-for="Senha" placeholder="********">
+                <label>Senha</label>
+                <input type="password" asp-for="Senha" placeholder="********" required>
 
-                    <label>Confirmar senha</label>
-                    <input type="password" asp-for="ConfirmarSenha" placeholder="********">
+                <label>Confirmar senha</label>
+                <input type="password" asp-for="ConfirmarSenha" placeholder="********" required>
 
-                    <button type="submit">
-                         Registrar  
-                    </button>
+                <label>Tipo de conta</label>
+                <select asp-for="Perfil" id="selectPerfil" style="width:100%; padding:10px; border:1px solid #ddd; border-radius:8px; margin-bottom:16px; font-size:14px;">
+                    <option value="Cidadao">Cidadão</option>
+                    <option value="Funcionario">Funcionário</option>
+                </select>
 
-                    <p class="switch-page">
-                        Já possui conta?
-                        <a href="/Login">
-                            Entrar
-                        </a>
-                    </p>
+                <div id="departamentoField" style="display:none;">
+                    <label>Departamento</label>
+                    <select asp-for="DepartamentoId" style="width:100%; padding:10px; border:1px solid #ddd; border-radius:8px; margin-bottom:16px; font-size:14px;">
+                        <option value="">-- Selecione o departamento --</option>
+                        @foreach (var dep in Model.DepartamentosDisponiveis)
+                        {
+                            <option value="@dep.Id">@dep.Nome - @dep.PrefeituraCidade?.Nome</option>
+                        }
+                    </select>
+                </div>
 
-                </form>
+                <button type="submit">Registrar</button>
 
+                <p class="switch-page">
+                    Já possui conta?
+                    <a href="/Login">Entrar</a>
+                </p>
+
+            </form>
         </div>
 
     </div>
+
+    <script>
+        document.getElementById('selectPerfil').addEventListener('change', function () {
+            document.getElementById('departamentoField').style.display =
+                this.value === 'Funcionario' ? 'block' : 'none';
+        });
+    </script>
 
 </body>
 </html>

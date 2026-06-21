@@ -1,10 +1,87 @@
-﻿@page
-@model IndexModel
+@page
+@model Urbanizze.Pages.IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Início";
+
+    var perfil = HttpContext.Session.GetString("UsuarioPerfil");
+    var nome = HttpContext.Session.GetString("UsuarioNome") ?? "Usuário";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="section-header">
+    <span class="section-tag">BEM-VINDO</span>
+    <h2>Olá, @nome!</h2>
+</div>
+
+<p class="mb-4" style="color: #666;">Selecione uma das opções abaixo para navegar pelo sistema.</p>
+
+<div class="row g-4">
+    @if (perfil == "Funcionario")
+    {
+        <div class="col-md-4">
+            <a href="/Usuarios" class="text-decoration-none">
+                <div class="card border p-4 text-center h-100">
+                    <i class="fa-solid fa-users fa-2x mb-3" style="color:#333;"></i>
+                    <h5 class="fw-bold">Usuários</h5>
+                    <p class="text-muted small mb-0">Gerenciar funcionários do sistema</p>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a href="/Cidadaos" class="text-decoration-none">
+                <div class="card border p-4 text-center h-100">
+                    <i class="fa-solid fa-user fa-2x mb-3" style="color:#333;"></i>
+                    <h5 class="fw-bold">Cidadãos</h5>
+                    <p class="text-muted small mb-0">Visualizar cidadãos cadastrados</p>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a href="/Denuncias" class="text-decoration-none">
+                <div class="card border p-4 text-center h-100">
+                    <i class="fa-solid fa-triangle-exclamation fa-2x mb-3" style="color:#333;"></i>
+                    <h5 class="fw-bold">Denúncias</h5>
+                    <p class="text-muted small mb-0">Gerenciar denúncias recebidas</p>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a href="/PrefeiturasCidades" class="text-decoration-none">
+                <div class="card border p-4 text-center h-100">
+                    <i class="fa-solid fa-city fa-2x mb-3" style="color:#333;"></i>
+                    <h5 class="fw-bold">Prefeituras</h5>
+                    <p class="text-muted small mb-0">Gerenciar prefeituras e cidades</p>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a href="/Departamentos" class="text-decoration-none">
+                <div class="card border p-4 text-center h-100">
+                    <i class="fa-solid fa-building fa-2x mb-3" style="color:#333;"></i>
+                    <h5 class="fw-bold">Departamentos</h5>
+                    <p class="text-muted small mb-0">Gerenciar departamentos</p>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a href="/Funcionarios" class="text-decoration-none">
+                <div class="card border p-4 text-center h-100">
+                    <i class="fa-solid fa-id-badge fa-2x mb-3" style="color:#333;"></i>
+                    <h5 class="fw-bold">Funcionários</h5>
+                    <p class="text-muted small mb-0">Gerenciar funcionários</p>
+                </div>
+            </a>
+        </div>
+    }
+    else
+    {
+        <div class="col-md-6">
+            <a href="/Denuncias" class="text-decoration-none">
+                <div class="card border p-4 text-center h-100">
+                    <i class="fa-solid fa-triangle-exclamation fa-2x mb-3" style="color:#333;"></i>
+                    <h5 class="fw-bold">Minhas Denúncias</h5>
+                    <p class="text-muted small mb-0">Ver e acompanhar suas denúncias</p>
+                </div>
+            </a>
+        </div>
+    }
 </div>

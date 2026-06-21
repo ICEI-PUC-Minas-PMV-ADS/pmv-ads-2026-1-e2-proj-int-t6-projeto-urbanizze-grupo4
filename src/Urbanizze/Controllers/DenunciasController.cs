@@ -110,4 +110,40 @@ public class DenunciasController : Controller
 
         return RedirectToAction("Detalhes", new { id });
     }
+
+        public async Task<IActionResult> Criar()
+    {
+        ViewBag.Departamentos = await _context.Departamentos
+            .Include(d => d.PrefeituraCidade)
+            .ToListAsync();
+
+        return View();
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Criar(string titulo, string descricao, int departamentoId, string? localizacao, bool anonima)
+    {
+        var cidadaoId = HttpContext.Session.GetInt32("UsuarioId");
+
+        if (cidadaoId == null)
+            return RedirectToAction("Index");
+
+        var denuncia = new Denuncia
+        {
+            CidadaoId = cidadaoId.Value,
+            DepartamentoId = departamentoId,
+            Titulo = titulo,
+            Descricao = descricao,
+            Localizacao = localizacao,
+            Anonima = anonima,
+            StatusDenuncia = StatusDenuncia.ABERTA,
+            CriadoEm = DateTime.UtcNow,
+            AtualizadoEm = DateTime.UtcNow
+        };
+
+        _context.Denuncias.Add(denuncia);
+        await _context.SaveChangesAsync();
+
+        return RedirectToAction("Index");
+    }
 }

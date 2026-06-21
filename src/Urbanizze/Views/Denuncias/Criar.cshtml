@@ -1,0 +1,54 @@
+@model dynamic
+@{
+    ViewData["Title"] = "Nova Denúncia";
+    var departamentos = (List<Departamento>)ViewBag.Departamentos;
+}
+
+<div class="section-header">
+    <span class="section-tag">NOVA</span>
+    <h2>Registrar Denúncia</h2>
+</div>
+
+<div class="card border p-4" style="max-width: 700px;">
+    <form method="post" asp-action="Criar" asp-controller="Denuncias">
+
+        <div style="margin-bottom: 16px;">
+            <label style="display:block; font-weight:600; margin-bottom:6px;">Título</label>
+            <input type="text" name="titulo" class="form-control" placeholder="Ex: Buraco na rua principal" required />
+        </div>
+
+        <div style="margin-bottom: 16px;">
+            <label style="display:block; font-weight:600; margin-bottom:6px;">Descrição</label>
+            <textarea name="descricao" class="form-control" rows="4" placeholder="Descreva o problema com detalhes..." required></textarea>
+        </div>
+
+        <div style="margin-bottom: 16px;">
+            <label style="display:block; font-weight:600; margin-bottom:6px;">Categoria (Departamento)</label>
+            <select name="departamentoId" class="form-select" required>
+                <option value="">-- Selecione --</option>
+                @foreach (var dep in departamentos)
+                {
+                    <option value="@dep.Id">@dep.Nome - @dep.PrefeituraCidade?.Nome (@dep.PrefeituraCidade?.Uf)</option>
+                }
+            </select>
+        </div>
+
+        <div style="margin-bottom: 16px;">
+            <label style="display:block; font-weight:600; margin-bottom:6px;">Localização</label>
+            <input type="text" name="localizacao" class="form-control" placeholder="Ex: Rua das Flores, 123 - Centro" />
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <label style="display:inline-flex; align-items:center; gap:8px; cursor:pointer;">
+                <input type="checkbox" name="anonima" value="true" />
+                Denúncia anônima
+            </label>
+        </div>
+
+        <div style="display:flex; gap:10px;">
+            <button type="submit" class="btn btn-dark">Enviar Denúncia</button>
+            <a href="@Url.Action("Index", "Denuncias")" class="btn btn-outline-secondary">Cancelar</a>
+        </div>
+
+    </form>
+</div>
