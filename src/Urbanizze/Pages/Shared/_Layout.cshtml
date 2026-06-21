@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Urbanizze</title>
     <link rel="stylesheet" href="~/css/urbanizze.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/denuncia.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 </head>
 <body>
@@ -29,27 +30,31 @@
                 @if (perfil == "Funcionario")
                 {
                     <a href="/Usuarios" class="@(Context.Request.Path.StartsWithSegments("/Usuarios") ? "active" : "")">
-                        <i class="fa-solid fa-users"></i>
-                        Usuários
+                        <i class="fa-solid fa-users"></i> Usuários
                     </a>
                     <a href="/Cidadaos" class="@(Context.Request.Path.StartsWithSegments("/Cidadaos") ? "active" : "")">
-                        <i class="fa-solid fa-user"></i>
-                        Cidadãos
+                        <i class="fa-solid fa-user"></i> Cidadãos
                     </a>
                     <a href="/Denuncias" class="@(Context.Request.Path.StartsWithSegments("/Denuncias") ? "active" : "")">
-                        <i class="fa-solid fa-triangle-exclamation"></i>
-                        Denúncias
+                        <i class="fa-solid fa-triangle-exclamation"></i> Denúncias
+                    </a>
+                    <a href="/PrefeiturasCidades" class="@(Context.Request.Path.StartsWithSegments("/PrefeiturasCidades") ? "active" : "")">
+                        <i class="fa-solid fa-city"></i> Prefeituras
+                    </a>
+                    <a href="/Departamentos" class="@(Context.Request.Path.StartsWithSegments("/Departamentos") ? "active" : "")">
+                        <i class="fa-solid fa-building"></i> Departamentos
+                    </a>
+                    <a href="/Funcionarios" class="@(Context.Request.Path.StartsWithSegments("/Funcionarios") ? "active" : "")">
+                        <i class="fa-solid fa-id-badge"></i> Funcionários
                     </a>
                 }
                 else
                 {
                     <a href="/Index" class="@(Context.Request.Path.StartsWithSegments("/Index") ? "active" : "")">
-                        <i class="fa-solid fa-house"></i>
-                        Início
+                        <i class="fa-solid fa-house"></i> Início
                     </a>
                     <a href="/Denuncias" class="@(Context.Request.Path.StartsWithSegments("/Denuncias") ? "active" : "")">
-                        <i class="fa-solid fa-triangle-exclamation"></i>
-                        Minhas Denúncias
+                        <i class="fa-solid fa-triangle-exclamation"></i> Minhas Denúncias
                     </a>
                 }
             </nav>

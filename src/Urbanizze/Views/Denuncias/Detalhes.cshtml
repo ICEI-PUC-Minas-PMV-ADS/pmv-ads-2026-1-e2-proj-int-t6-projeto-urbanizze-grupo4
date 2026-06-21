@@ -1,0 +1,155 @@
+@model Denuncia
+@{
+    ViewData["Title"] = "Detalhes da Denúncia";
+
+    var codigoDenuncia = $"#URZ-{Model.CriadoEm:yyyy}-{Model.Id:D7}";
+    var statusClass = Model.StatusDenuncia switch
+    {
+        StatusDenuncia.ABERTA => "status-aberta",
+        StatusDenuncia.EM_ANALISE => "status-analise",
+        StatusDenuncia.CONCLUIDA => "status-resolvida",
+        StatusDenuncia.INDEFERIDA => "status-indeferida",
+        _ => ""
+    };
+    var statusTexto = Model.StatusDenuncia switch
+    {
+        StatusDenuncia.ABERTA => "Aberto",
+        StatusDenuncia.EM_ANALISE => "Em andamento",
+        StatusDenuncia.CONCLUIDA => "Resolvido",
+        StatusDenuncia.INDEFERIDA => "Indeferida",
+        _ => ""
+    };
+
+    var iniciais = "";
+    if (!Model.Anonima && Model.Cidadao != null)
+    {
+        iniciais = string.Join("", Model.Cidadao.Nome
+            .Split(' ')
+            .Take(2)
+            .Select(p => p.Length > 0 ? p[0].ToString() : ""));
+    }
+
+    var cidadeNome = Model.Departamento?.PrefeituraCidade?.Nome ?? "";
+    var localizacao = Model.Localizacao;
+    var localizacaoCompleta = !string.IsNullOrWhiteSpace(localizacao)
+        ? (string.IsNullOrWhiteSpace(cidadeNome) ? localizacao : $"{localizacao}\n{cidadeNome}")
+        : cidadeNome;
+}
+
+<div class="detalhes-header">
+    <div class="detalhes-top">
+        <span class="detalhes-codigo">DENÚNCIA @codigoDenuncia</span>
+        <div class="detalhes-status-actions">
+            <form method="post" asp-action="AlterarStatus" asp-controller="Denuncias" class="status-form">
+                <input type="hidden" name="id" value="@Model.Id" />
+                <select name="novoStatus" class="status-select" onchange="this.form.submit()">
+                    <option value="ABERTA" selected="@(Model.StatusDenuncia == StatusDenuncia.ABERTA)">Aberto</option>
+                    <option value="EM_ANALISE" selected="@(Model.StatusDenuncia == StatusDenuncia.EM_ANALISE)">Em andamento</option>
+                    <option value="CONCLUIDA" selected="@(Model.StatusDenuncia == StatusDenuncia.CONCLUIDA)">Resolvido</option>
+                    <option value="INDEFERIDA" selected="@(Model.StatusDenuncia == StatusDenuncia.INDEFERIDA)">Indeferida</option>
+                </select>
+            </form>
+        </div>
+    </div>
+    <div class="detalhes-titulo-row">
+        <a href="@Url.Action("Index", "Denuncias")" class="voltar-btn">
+            <i class="fa-solid fa-arrow-left"></i>
+        </a>
+        <h2>@Model.Titulo</h2>
+        <span class="denuncia-status @statusClass">@statusTexto</span>
+    </div>
+</div>
+
+<div class="detalhes-content">
+    <div class="detalhes-info">
+        <h3>Informações da Denúncia</h3>
+
+        <div class="info-item">
+            <span class="info-label">
+                <i class="fa-solid fa-user"></i> CIDADÃO
+            </span>
+            <div class="info-value cidadao-info">
+                @if (Model.Anonima)
+                {
+                    <div class="user-circle">AN</div>
+                    <span>Anônimo</span>
+                }
+                else
+                {
+                    <div class="user-circle">@iniciais</div>
+                    <span>@Model.Cidadao?.Nome</span>
+                }
+            </div>
+        </div>
+
+        <div class="info-item">
+            <span class="info-label">
+                <i class="fa-solid fa-tag"></i> CATEGORIA
+            </span>
+            <span class="info-value">@Model.Departamento?.Nome</span>
+        </div>
+
+        @if (!string.IsNullOrWhiteSpace(localizacaoCompleta))
+        {
+            <div class="info-item">
+                <span class="info-label">
+                    <i class="fa-solid fa-location-dot"></i> LOCALIZAÇÃO
+                </span>
+                <span class="info-value">@localizacaoCompleta</span>
+            </div>
+        }
+
+        <div class="info-item">
+            <span class="info-label">
+                <i class="fa-solid fa-calendar"></i> DATA DA DENÚNCIA
+            </span>
+            <span class="info-value">@Model.CriadoEm.ToString("d 'de' MMMM 'de' yyyy", new System.Globalization.CultureInfo("pt-BR"))</span>
+        </div>
+
+        <div class="info-item">
+            <span class="info-label">
+                <i class="fa-solid fa-align-left"></i> DESCRIÇÃO
+            </span>
+            <p class="info-descricao">@Model.Descricao</p>
+        </div>
+    </div>
+
+    <div class="detalhes-comunicacao">
+        <h3>Comunicação</h3>
+        <span class="msg-count">@Model.Mensagens.Count mensagens</span>
+
+        <div class="mensagens-lista">
+            @foreach (var msg in Model.Mensagens)
+            {
+                var isFuncionario = msg.FuncionarioId != null;
+                var nomeRemetente = isFuncionario
+                    ? (msg.Funcionario?.Cidadao?.Nome ?? "Funcionário")
+                    : (msg.Cidadao?.Nome ?? "Cidadão");
+
+                <div class="mensagem @(isFuncionario ? "mensagem-funcionario" : "mensagem-cidadao")">
+                    <div class="mensagem-header">
+                        <strong>@nomeRemetente</strong>
+                    </div>
+                    <div class="mensagem-body">
+                        <p>@msg.Texto</p>
+                    </div>
+                    <span class="mensagem-hora">
+                        <i class="fa-regular fa-clock"></i>
+                        @msg.CriadoEm.ToString("HH:mm")
+                    </span>
+                </div>
+            }
+        </div>
+
+        <form method="post" asp-action="EnviarMensagem" asp-controller="Denuncias" class="mensagem-form">
+            <input type="hidden" name="id" value="@Model.Id" />
+            <div class="mensagem-input-wrapper">
+                <input type="text" name="novaMensagem" placeholder="Digite sua mensagem..." class="mensagem-input" required />
+                <button type="submit" class="enviar-btn">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    Enviar
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
