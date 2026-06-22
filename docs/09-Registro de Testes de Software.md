@@ -2,6 +2,14 @@
 
 <span style="color:red">Pré-requisitos: <a href="3-Projeto de Interface.md"> Projeto de Interface</a></span>, <a href="8-Plano de Testes de Software.md"> Plano de Testes de Software</a>
 
+## Evidências em Vídeo (interface anterior)
+
+Os vídeos abaixo foram gravados durante testes realizados em uma versão anterior da interface. Servem como registro complementar do processo de validação da aplicação:
+
+- [Vídeo 1 — Teste de cadastro e login](video/video1-cadastro-login.mp4)
+- [Vídeo 2 — Teste de denúncias e navegação](video/video2-denuncias-navegacao.mp4)
+- [Vídeo 3 — Teste de mensagens e status](video/video3-mensagens-status.mp4)
+
 ## Evidências dos Testes
 
 | **Caso de Teste** | **CT01 – Cadastrar cidadão** |
