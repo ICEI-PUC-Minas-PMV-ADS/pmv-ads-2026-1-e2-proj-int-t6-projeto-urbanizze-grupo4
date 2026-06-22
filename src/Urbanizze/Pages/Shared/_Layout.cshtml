@@ -31,14 +31,20 @@
             <nav class="menu">
                 @if (perfil == "Funcionario")
                 {
-                    <a href="/Usuarios" class="@(Context.Request.Path.StartsWithSegments("/Usuarios") ? "active" : "")">
-                        <i class="fa-solid fa-users"></i> Usuários
-                    </a>
                     <a href="/Cidadaos" class="@(Context.Request.Path.StartsWithSegments("/Cidadaos") ? "active" : "")">
                         <i class="fa-solid fa-user"></i> Cidadãos
                     </a>
                     <a href="/Denuncias" class="@(Context.Request.Path.StartsWithSegments("/Denuncias") ? "active" : "")">
                         <i class="fa-solid fa-circle-exclamation"></i> Denúncias
+                    </a>
+                    <a href="/PrefeiturasCidades" class="@(Context.Request.Path.StartsWithSegments("/PrefeiturasCidades") ? "active" : "")">
+                        <i class="fa-solid fa-city"></i> Prefeituras
+                    </a>
+                    <a href="/Departamentos" class="@(Context.Request.Path.StartsWithSegments("/Departamentos") ? "active" : "")">
+                        <i class="fa-solid fa-building"></i> Departamentos
+                    </a>
+                    <a href="/Funcionarios" class="@(Context.Request.Path.StartsWithSegments("/Funcionarios") ? "active" : "")">
+                        <i class="fa-solid fa-id-badge"></i> Funcionários
                     </a>
                 }
                 else

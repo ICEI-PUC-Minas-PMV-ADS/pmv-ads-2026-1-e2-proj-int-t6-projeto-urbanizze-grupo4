@@ -47,7 +47,7 @@ namespace Urbanizze.Pages.Login
             {
                 HttpContext.Session.SetString("UsuarioPerfil", "Funcionario");
                 HttpContext.Session.SetInt32("FuncionarioId", funcionario.Id);
-                return RedirectToPage("/Usuarios/Index");
+                return RedirectToPage("/Funcionarios/Index");
             }
             else
             {
