@@ -82,12 +82,16 @@
             </div>
         </div>
 
+        <hr class="info-divider" />
+
         <div class="info-item">
             <span class="info-label">
                 <i class="fa-solid fa-tag"></i> CATEGORIA
             </span>
             <span class="info-value">@Model.Departamento?.Nome</span>
         </div>
+
+        <hr class="info-divider" />
 
         @if (!string.IsNullOrWhiteSpace(localizacaoCompleta))
         {
@@ -97,6 +101,8 @@
                 </span>
                 <span class="info-value">@localizacaoCompleta</span>
             </div>
+
+            <hr class="info-divider" />
         }
 
         <div class="info-item">
@@ -106,10 +112,10 @@
             <span class="info-value">@Model.CriadoEm.ToString("d 'de' MMMM 'de' yyyy", new System.Globalization.CultureInfo("pt-BR"))</span>
         </div>
 
+        <hr class="info-divider" />
+
         <div class="info-item">
-            <span class="info-label">
-                <i class="fa-solid fa-align-left"></i> DESCRIÇÃO
-            </span>
+            <span class="info-label">DESCRIÇÃO</span>
             <p class="info-descricao">@Model.Descricao</p>
         </div>
     </div>

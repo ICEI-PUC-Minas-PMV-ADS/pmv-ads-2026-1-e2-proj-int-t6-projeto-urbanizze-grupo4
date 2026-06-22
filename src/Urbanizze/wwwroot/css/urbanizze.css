@@ -26,9 +26,23 @@ body {
 }
  
 .logo {
-    font-size: 28px;
-    font-weight: bold;
+    font-size: 22px;
+    font-weight: 800;
     margin: 0;
+    letter-spacing: 1px;
+    padding-bottom: 10px;
+    position: relative;
+}
+
+.logo::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 36px;
+    height: 3px;
+    background: #D98936;
+    border-radius: 2px;
 }
  
 .sidebar-line {

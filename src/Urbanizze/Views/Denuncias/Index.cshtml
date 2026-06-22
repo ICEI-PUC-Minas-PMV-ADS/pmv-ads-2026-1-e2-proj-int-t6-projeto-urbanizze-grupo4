@@ -17,21 +17,21 @@
 </div>
 
 <div class="stats-cards">
-    <div class="stat-card">
+    <div class="stat-card card-total">
         <span class="stat-label">TOTAL</span>
         <span class="stat-value">@totalDenuncias</span>
     </div>
-    <div class="stat-card">
+    <div class="stat-card card-abertas">
         <span class="stat-label">ABERTAS</span>
-        <span class="stat-value stat-abertas">@totalAbertas</span>
+        <span class="stat-value">@totalAbertas</span>
     </div>
-    <div class="stat-card">
+    <div class="stat-card card-analise">
         <span class="stat-label">EM ANÁLISE</span>
-        <span class="stat-value stat-analise">@totalEmAnalise</span>
+        <span class="stat-value">@totalEmAnalise</span>
     </div>
-    <div class="stat-card">
+    <div class="stat-card card-resolvidas">
         <span class="stat-label">RESOLVIDAS</span>
-        <span class="stat-value stat-resolvidas">@totalResolvidas</span>
+        <span class="stat-value">@totalResolvidas</span>
     </div>
 </div>
 
@@ -124,6 +124,6 @@
         </tbody>
     </table>
     <div style="padding: 14px 20px; font-size: 13px; color: #777;">
-        Exibindo @Model.Count de @totalDenuncias registro(s)
+        Exibindo <strong>1–@Model.Count</strong> de <strong>@totalDenuncias</strong> registros
     </div>
 </section>

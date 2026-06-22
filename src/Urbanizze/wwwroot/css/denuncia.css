@@ -8,32 +8,52 @@
 }
 
 .stat-card {
-    background: #FDFBF7;
-    border: 1px solid #DDD5C8;
     border-radius: 12px;
     padding: 20px 24px;
     display: flex;
     flex-direction: column;
     gap: 4px;
+    border: 1px solid #DDD5C8;
+    background: #FDFBF7;
+}
+
+.stat-card.card-total {
+    background: #FDFBF7;
+    border: 1px solid #DDD5C8;
+}
+
+.stat-card.card-abertas {
+    background: #ECFDF5;
+    border: 1px solid #D1FAE5;
+}
+
+.stat-card.card-analise {
+    background: #FFF7ED;
+    border: 1px solid #FED7AA;
+}
+
+.stat-card.card-resolvidas {
+    background: #F0FDF4;
+    border: 1px solid #BBF7D0;
 }
 
 .stat-label {
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 1px;
-    color: #6A7B91;
     text-transform: uppercase;
 }
+
+.stat-card.card-total .stat-label { color: #6A7B91; }
+.stat-card.card-abertas .stat-label { color: #059669; }
+.stat-card.card-analise .stat-label { color: #D97706; }
+.stat-card.card-resolvidas .stat-label { color: #059669; }
 
 .stat-value {
     font-size: 36px;
     font-weight: 700;
     color: #1F2937;
 }
-
-.stat-abertas { color: #2E8B57; }
-.stat-analise { color: #D98936; }
-.stat-resolvidas { color: #3B82F6; }
 
 /* ===== DENUNCIAS - TOOLBAR ===== */
 
@@ -206,6 +226,12 @@
     color: #1F2937;
     margin-bottom: 24px;
     font-weight: 700;
+}
+
+.info-divider {
+    border: none;
+    border-top: 1px solid #E5DED1;
+    margin: 0 0 22px 0;
 }
 
 .info-item {

@@ -5,48 +5,90 @@
     ViewData["Title"] = "Cidadãos";
 }
 
-<h1 class="fs-4 fw-bold mb-3">Cidadãos Cadastrados</h1>
+<div class="section-header">
+    <span class="section-tag">CIDADÃOS</span>
+    <h2>Cidadãos Cadastrados</h2>
+</div>
 
-<div class="d-flex align-items-center gap-2 mb-3 flex-wrap">
-    <div class="ms-auto d-flex gap-2">
-        <input type="text" class="form-control form-control-sm" style="width:180px" placeholder="Buscar cidadão..." />
+<div class="denuncias-toolbar">
+    <div class="filters">
+        <button class="filter-dark">
+            <i class="fa-solid fa-sliders"></i>
+            Filtros
+        </button>
+        <button class="filter-light">Todas as cidades</button>
+        <button class="filter-light">Ativos</button>
+    </div>
+    <div class="users-actions">
+        <div class="user-search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Buscar cidadão..." />
+        </div>
+        <button class="new-user-btn">
+            <i class="fa-solid fa-plus"></i>
+            Novo cidadão
+        </button>
     </div>
 </div>
 
-<div class="card border">
-    <table class="table table-hover mb-0">
-        <thead class="table-light">
+<section class="user-list">
+    <table>
+        <thead>
             <tr>
-                <th>Cidadão</th>
-                <th>E-mail</th>
-                <th>Telefone</th>
-                <th>CPF</th>
-                <th>Cadastro</th>
-                <th>Status</th>
+                <th>CIDADÃO</th>
+                <th>E-MAIL</th>
+                <th>TELEFONE</th>
+                <th>CIDADE</th>
+                <th>CADASTRO</th>
+                <th>STATUS</th>
+                <th>AÇÕES</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var c in Model.Cidadaos)
             {
+                var iniciais = string.Join("", c.Nome
+                    .Split(' ')
+                    .Take(2)
+                    .Select(p => p[0].ToString().ToUpper()));
+
+                var cidade = Model.CidadaoCidade.GetValueOrDefault(c.Id, "—");
+
                 <tr>
                     <td>
-                        <span class="badge bg-secondary me-2">@c.Nome.Substring(0, Math.Min(2, c.Nome.Length)).ToUpper()</span>
-                        @c.Nome
+                        <div class="user-name">
+                            <div class="user-circle">@iniciais</div>
+                            @c.Nome
+                        </div>
                     </td>
-                    <td>@c.Email</td>
+                    <td class="user-email">@c.Email</td>
                     <td>@c.Telefone</td>
-                    <td>@c.Cpf</td>
+                    <td>@cidade</td>
                     <td>@c.CriadoEm.ToString("dd/MM/yyyy")</td>
                     <td>
-                        <span class="badge @(c.Ativo ? "text-bg-success" : "text-bg-warning")">
-                            @(c.Ativo ? "Ativo" : "Inativo")
-                        </span>
+                        @if (c.Ativo)
+                        {
+                            <span class="status active">Ativo</span>
+                        }
+                        else
+                        {
+                            <span class="status inactive">Inativo</span>
+                        }
+                    </td>
+                    <td class="actions">
+                        <div class="dropdown">
+                            <button class="dropdown-btn">&#8942;</button>
+                            <div class="dropdown-content">
+                                <a href="#">Editar</a>
+                                <a href="#" class="delete-option">Excluir</a>
+                            </div>
+                        </div>
                     </td>
                 </tr>
             }
         </tbody>
     </table>
-    <div class="px-3 py-2 text-muted small border-top">
-        Exibindo @Model.Cidadaos.Count registros
+    <div style="padding: 14px 20px; font-size: 13px; color: #777;">
+        Exibindo <strong>1–@Model.Cidadaos.Count</strong> de <strong>@Model.Cidadaos.Count</strong> registros
     </div>
-</div>
+</section>

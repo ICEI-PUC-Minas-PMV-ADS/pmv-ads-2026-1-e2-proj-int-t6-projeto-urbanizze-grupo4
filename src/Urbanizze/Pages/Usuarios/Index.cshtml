@@ -29,16 +29,16 @@
     </button>
 </div>
 
-<sectionn class="user-list">
+<section class="user-list">
     <table>
         <thead>
             <tr>
-                <th>Usuário</th>
-                <th>E-mail</th>
-                <th>Departamento</th>
-                <th>Criação</th>
-                <th>Status</th>
-                <th>Ações</th>
+                <th>USUÁRIO</th>
+                <th>E-MAIL</th>
+                <th>CARGO</th>
+                <th>CRIAÇÃO</th>
+                <th>STATUS</th>
+                <th>AÇÕES</th>
             </tr>
         </thead>
         <tbody>
@@ -57,7 +57,7 @@
                         </div>
                     </td>
                     <td class="user-email">@funcionario.Cidadao.Email</td>
-                    <td>@funcionario.Departamento?.Nome</td>
+                    <td>@(funcionario.Departamento?.Nome ?? "—")</td>
                     <td>@funcionario.CriadoEm.ToString("dd/MM/yyyy")</td>
                     <td>
                         @if (funcionario.Cidadao.Ativo)
@@ -83,6 +83,6 @@
         </tbody>
     </table>
     <div style="padding: 14px 20px; font-size: 13px; color: #777;">
-        Exibindo @Model.Funcionarios.Count registro(s)
+        Exibindo <strong>1–@Model.Funcionarios.Count</strong> de <strong>@Model.Funcionarios.Count</strong> registros
     </div>
-</sectionn>
+</section>

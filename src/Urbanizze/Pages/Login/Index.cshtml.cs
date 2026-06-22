@@ -52,7 +52,7 @@ namespace Urbanizze.Pages.Login
             else
             {
                 HttpContext.Session.SetString("UsuarioPerfil", "Cidadao");
-                return RedirectToPage("/Index");
+                return Redirect("/Denuncias");
             }
         }
     }

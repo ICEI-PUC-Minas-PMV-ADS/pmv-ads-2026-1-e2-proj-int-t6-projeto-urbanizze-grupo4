@@ -11,7 +11,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrar - Urbanizze</title>
-    <link rel="stylesheet" href="/css/registrar/style.css">
+    <link rel="stylesheet" href="/css/login/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
@@ -20,13 +20,12 @@
     <header class="top-bar">
         <div class="top-logo">URBANIZZE</div>
         <a href="/Login" class="top-button">
-            <i class="fa-solid fa-right-to-bracket"></i> Entrar
+            <i class="fa-solid fa-right-to-bracket"></i>
+            Entrar
         </a>
     </header>
 
-    <div class="top-line"></div>
-
-    <div class="container">
+    <div class="container container-register">
 
         <div class="left-panel">
             <h1>URBANIZZE</h1>
@@ -55,13 +54,13 @@
 
             @if (!string.IsNullOrEmpty(Model.Erro))
             {
-                <p style="color:red; margin-bottom:10px;">@Model.Erro</p>
+                <p class="form-error">@Model.Erro</p>
             }
 
             <form method="post">
 
                 <label>Nome</label>
-                <input type="text" asp-for="Nome" placeholder="Seu nome" required>
+                <input type="text" asp-for="Nome" placeholder="Seu nome completo" required>
 
                 <label>CPF</label>
                 <input type="text" asp-for="Cpf" placeholder="000.000.000-00" required>
@@ -72,21 +71,22 @@
                 <label>E-mail</label>
                 <input type="email" asp-for="Email" placeholder="seu@email.com" required>
 
-                <label>Senha</label>
-                <input type="password" asp-for="Senha" placeholder="********" required>
 
-                <label>Confirmar senha</label>
-                <input type="password" asp-for="ConfirmarSenha" placeholder="********" required>
+ <label>Senha</label>
+                        <input type="password" asp-for="Senha" placeholder="********" required>
 
+                         <label>Confirmar senha</label>
+                        <input type="password" asp-for="ConfirmarSenha" placeholder="********" required>
+                
                 <label>Tipo de conta</label>
-                <select asp-for="Perfil" id="selectPerfil" style="width:100%; padding:10px; border:1px solid #ddd; border-radius:8px; margin-bottom:16px; font-size:14px;">
+                <select asp-for="Perfil" id="selectPerfil" class="form-select">
                     <option value="Cidadao">Cidadão</option>
                     <option value="Funcionario">Funcionário</option>
                 </select>
 
                 <div id="departamentoField" style="display:none;">
                     <label>Departamento</label>
-                    <select asp-for="DepartamentoId" style="width:100%; padding:10px; border:1px solid #ddd; border-radius:8px; margin-bottom:16px; font-size:14px;">
+                    <select asp-for="DepartamentoId" class="form-select">
                         <option value="">-- Selecione o departamento --</option>
                         @foreach (var dep in Model.DepartamentosDisponiveis)
                         {
