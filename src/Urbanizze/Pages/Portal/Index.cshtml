@@ -1,0 +1,125 @@
+@page "/"
+@model Urbanizze.Pages.Portal.IndexModel
+@{
+    Layout = "_LayoutPortal";
+    ViewData["Title"] = "Portal de Transparência";
+}
+
+<section class="portal-hero">
+    <p class="portal-hero-tag">Portal de Transparência</p>
+    <h1>Acompanhe as denúncias da sua<br />cidade</h1>
+    <p>Veja as ocorrências urbanas reportadas pelos cidadãos e o trabalho da administração pública para resolvê-las.</p>
+</section>
+
+<div class="portal-select-wrapper">
+    <div class="portal-select-box">
+        <i class="fa-solid fa-location-dot"></i>
+        <select id="cidadeSelect" onchange="selecionarCidade(this.value)">
+            <option value="">Selecione uma cidade...</option>
+            @foreach (var cidade in Model.Cidades)
+            {
+                var isSelected = Model.CidadeSelecionada?.Id == cidade.Id;
+                if (isSelected)
+                {
+                    <option value="@cidade.Id" selected>@cidade.Nome - @cidade.Uf</option>
+                }
+                else
+                {
+                    <option value="@cidade.Id">@cidade.Nome - @cidade.Uf</option>
+                }
+            }
+        </select>
+    </div>
+</div>
+
+<div class="portal-content">
+    @if (Model.CidadeSelecionada == null)
+    {
+        <div class="portal-empty">
+            <div class="portal-empty-icon">
+                <i class="fa-solid fa-location-dot"></i>
+            </div>
+            <h3>Selecione uma cidade</h3>
+            <p>Escolha uma cidade acima para visualizar as denúncias e acompanhar o trabalho da administração pública.</p>
+        </div>
+    }
+    else
+    {
+        <div class="portal-stats">
+            <div class="portal-stat-card stat-total">
+                <div class="stat-label">Total</div>
+                <div class="stat-value">@Model.TotalDenuncias</div>
+            </div>
+            <div class="portal-stat-card stat-abertas">
+                <div class="stat-label">Abertas</div>
+                <div class="stat-value">@Model.TotalAbertas</div>
+            </div>
+            <div class="portal-stat-card stat-analise">
+                <div class="stat-label">Em Análise</div>
+                <div class="stat-value">@Model.TotalEmAnalise</div>
+            </div>
+            <div class="portal-stat-card stat-resolvidas">
+                <div class="stat-label">Resolvidas</div>
+                <div class="stat-value">@Model.TotalResolvidas</div>
+            </div>
+        </div>
+
+        <h2 class="portal-denuncias-title">Denúncias em @Model.CidadeSelecionada.Nome</h2>
+
+        @if (Model.Denuncias.Any())
+        {
+            <div class="portal-denuncias-grid">
+                @foreach (var d in Model.Denuncias)
+                {
+                    var badgeClass = d.StatusDenuncia switch
+                    {
+                        StatusDenuncia.ABERTA => "badge-aberta",
+                        StatusDenuncia.EM_ANALISE => "badge-analise",
+                        StatusDenuncia.CONCLUIDA => "badge-resolvida",
+                        StatusDenuncia.INDEFERIDA => "badge-indeferida",
+                        _ => "badge-aberta"
+                    };
+                    var badgeText = d.StatusDenuncia switch
+                    {
+                        StatusDenuncia.ABERTA => "Aberto",
+                        StatusDenuncia.EM_ANALISE => "Em Análise",
+                        StatusDenuncia.CONCLUIDA => "Resolvido",
+                        StatusDenuncia.INDEFERIDA => "Indeferida",
+                        _ => "Aberto"
+                    };
+
+                    <div class="portal-denuncia-card">
+                        <span class="portal-denuncia-badge @badgeClass">@badgeText</span>
+                        <h4>@d.Titulo</h4>
+                        <div class="portal-denuncia-meta">
+                            <span class="categoria">@d.Departamento.Nome</span>
+                            <span>@d.CriadoEm.ToString("dd/MM/yyyy")</span>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="portal-empty">
+                <div class="portal-empty-icon">
+                    <i class="fa-solid fa-check-circle"></i>
+                </div>
+                <h3>Nenhuma denúncia encontrada</h3>
+                <p>Não há denúncias registradas para esta cidade.</p>
+            </div>
+        }
+    }
+</div>
+
+@section Scripts {
+<script>
+    function selecionarCidade(cidadeId) {
+        if (cidadeId) {
+            window.location.href = '/?cidadeId=' + cidadeId;
+        } else {
+            window.location.href = '/';
+        }
+    }
+</script>
+}
